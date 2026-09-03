@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CONTACT } from "../data/site";
 import { cn } from "../utils/cn";
 import { EASE, Icon, WhatsAppGlyph } from "./ui";
@@ -151,9 +151,34 @@ const STACK_CARDS: StackCard[] = [
 
 export default function Perspective3DStackCards() {
   const [activeTab, setActiveTab] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handlePrev = () => {
+    setActiveTab((prev) => (prev - 1 + STACK_CARDS.length) % STACK_CARDS.length);
+  };
+
+  const handleNext = () => {
+    setActiveTab((prev) => (prev + 1) % STACK_CARDS.length);
+  };
+
+  // Auto-advance slideshow timer with pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % STACK_CARDS.length);
+    }, 6500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const current = STACK_CARDS[activeTab];
+  const nextCard = STACK_CARDS[(activeTab + 1) % STACK_CARDS.length];
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 sm:py-28">
+    <section
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      className="relative overflow-hidden bg-white py-20 sm:py-28"
+    >
       {/* Background Subtle Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#FAF7F0] to-transparent" />
 
@@ -171,7 +196,7 @@ export default function Perspective3DStackCards() {
             Building Communities. <em className="text-forest-700">Creating Value.</em>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-forest-900/65 sm:text-base">
-            Select each tier to inspect our legal assurance, delivered infrastructure, strategic growth corridors, and master planning.
+            Click any tab or use the navigation controls below to inspect our legal assurance, delivered infrastructure, strategic growth corridors, and master planning.
           </p>
         </div>
 
@@ -188,15 +213,38 @@ export default function Perspective3DStackCards() {
                   : "border border-forest-600/20 bg-white text-forest-800 hover:border-forest-600/50 hover:bg-mint-50",
               )}
             >
-              <Icon name={card.icon} className="h-3.5 w-3.5" />
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-[10px]">
+                0{i + 1}
+              </span>
               <span>{card.tabLabel}</span>
             </button>
           ))}
         </div>
 
-        {/* 3D Perspective Stack Stage (Matches 00:10 in video) */}
+        {/* 3D Perspective Stack Stage with Left/Right Navigation Controls */}
         <div className="relative mt-12 flex items-center justify-center [perspective:1400px]">
-          <div className="relative h-[560px] w-full max-w-4xl sm:h-[500px]">
+          
+          {/* Floating Left Arrow Button */}
+          <button
+            onClick={handlePrev}
+            className="absolute -left-2 z-40 hidden h-12 w-12 items-center justify-center rounded-full border border-forest-600/20 bg-white/95 text-forest-800 shadow-xl transition-all duration-200 hover:scale-110 hover:bg-forest-700 hover:text-white active:scale-95 sm:-left-6 sm:flex lg:-left-8"
+            aria-label="Previous card"
+            title="Previous Card"
+          >
+            <Icon name="chevL" className="h-5 w-5" />
+          </button>
+
+          {/* Floating Right Arrow Button */}
+          <button
+            onClick={handleNext}
+            className="absolute -right-2 z-40 hidden h-12 w-12 items-center justify-center rounded-full border border-forest-600/20 bg-white/95 text-forest-800 shadow-xl transition-all duration-200 hover:scale-110 hover:bg-forest-700 hover:text-white active:scale-95 sm:-right-6 sm:flex lg:-right-8"
+            aria-label="Next card"
+            title="Next Card"
+          >
+            <Icon name="chevR" className="h-5 w-5" />
+          </button>
+
+          <div className="relative h-[600px] w-full max-w-4xl sm:h-[500px]">
             {STACK_CARDS.map((card, i) => {
               const diff = i - activeTab;
               const isSelected = i === activeTab;
@@ -272,7 +320,7 @@ export default function Perspective3DStackCards() {
                         </h3>
 
                         {/* Bullet Items */}
-                        <div className="mt-5 space-y-3.5">
+                        <div className="mt-5 space-y-3">
                           {card.bullets.map((b, bIdx) => (
                             <div key={bIdx} className="flex items-start gap-3">
                               <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-400 text-forest-950">
@@ -291,7 +339,7 @@ export default function Perspective3DStackCards() {
                         </div>
                       </div>
 
-                      {/* Action Bar */}
+                      {/* Action Bar with Next Card Button */}
                       <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/15 pt-4">
                         <a
                           href={CONTACT.whatsapp(
@@ -303,18 +351,23 @@ export default function Perspective3DStackCards() {
                         >
                           <WhatsAppGlyph className="h-4 w-4" /> Quick Enquiry
                         </a>
-                        <a
-                          href={CONTACT.phoneHref}
-                          className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-xs font-bold text-white backdrop-blur transition hover:bg-white/20"
+
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleNext();
+                          }}
+                          className="flex items-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/20 px-4 py-2.5 text-xs font-bold text-gold-300 backdrop-blur transition hover:bg-gold-400 hover:text-forest-950"
                         >
-                          <Icon name="phone" className="h-3.5 w-3.5" /> {CONTACT.phone}
-                        </a>
+                          <span>Next: {nextCard.tabLabel}</span>
+                          <Icon name="arrowR" className="h-3.5 w-3.5" />
+                        </button>
                       </div>
                     </div>
 
                     {/* Right Column: Visual Preview Card */}
                     <div className="relative hidden h-full flex-col justify-between sm:col-span-5 sm:flex">
-                      <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-white/20 shadow-xl">
+                      <div className="relative h-60 w-full overflow-hidden rounded-2xl border border-white/20 shadow-xl">
                         <img
                           src={card.image}
                           alt={card.title}
@@ -330,7 +383,7 @@ export default function Perspective3DStackCards() {
                       </div>
 
                       {/* Highlight Metric Pill */}
-                      <div className="mt-3 flex items-center justify-between rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                      <div className="mt-3 flex items-center justify-between rounded-xl border border-white/15 bg-white/10 p-3.5 backdrop-blur">
                         <div>
                           <p className="text-[10px] font-bold uppercase tracking-wider text-white/60">
                             {card.highlightMetric.label}
@@ -349,6 +402,42 @@ export default function Perspective3DStackCards() {
               );
             })}
           </div>
+        </div>
+
+        {/* Mobile & Bottom Navigation Controls Bar */}
+        <div className="mt-10 flex items-center justify-between border-t border-forest-600/10 pt-6 sm:justify-center sm:gap-6">
+          <button
+            onClick={handlePrev}
+            className="flex items-center gap-2 rounded-full border border-forest-600/20 bg-white px-4 py-2.5 text-xs font-bold text-forest-800 shadow-sm transition hover:bg-forest-700 hover:text-white"
+          >
+            <Icon name="chevL" className="h-4 w-4" />
+            <span>Previous</span>
+          </button>
+
+          {/* Step dots */}
+          <div className="flex items-center gap-2">
+            {STACK_CARDS.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(idx)}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300",
+                  idx === activeTab
+                    ? "w-7 bg-forest-800"
+                    : "w-2 bg-forest-600/25 hover:bg-forest-600/50",
+                )}
+                aria-label={`Go to card ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={handleNext}
+            className="flex items-center gap-2 rounded-full border border-forest-600/20 bg-white px-4 py-2.5 text-xs font-bold text-forest-800 shadow-sm transition hover:bg-forest-700 hover:text-white"
+          >
+            <span>Next Card</span>
+            <Icon name="chevR" className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </section>
