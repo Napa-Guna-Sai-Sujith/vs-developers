@@ -11,6 +11,7 @@ import {
   TESTIMONIALS,
   WHY_STEPS,
 } from "../data/site";
+import HotstarProjectSpotlight from "../components/HotstarProjectSpotlight";
 import { cn } from "../utils/cn";
 import {
   CountUp,
@@ -873,6 +874,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <AboutSnapshot />
+      <HotstarProjectSpotlight />
       <FeaturedProjects />
       <Services />
       <WhySection />
