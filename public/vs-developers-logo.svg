@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-labelledby="title desc">
+  <title id="title">VS Developers logo</title>
+  <desc id="desc">Green tree and house emblem for VS Developers</desc>
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9cc852"/>
+      <stop offset="1" stop-color="#4c913d"/>
+    </linearGradient>
+    <linearGradient id="home" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#92bf4f"/>
+      <stop offset="1" stop-color="#427b40"/>
+    </linearGradient>
+  </defs>
+  <circle cx="110" cy="110" r="100" fill="#fff"/>
+  <path d="M147 185c36-24 49-58 47-102" fill="none" stroke="#74ad45" stroke-width="5" stroke-linecap="round"/>
+  <path d="M95 37c-2 29-15 46-38 54m38-54c19 11 27 31 25 56m-25-56c-22-10-42-6-59 12m59-12c24-13 48-7 61 16" fill="none" stroke="#528b40" stroke-width="4" stroke-linecap="round"/>
+  <path d="M91 49c-18-16-39-11-46 5 17 12 35 10 46-5zM75 69C56 54 37 61 34 77c17 9 32 5 41-8zM91 80C73 70 58 78 57 94c16 7 29 2 34-14zM116 55c-1-20 16-32 32-25 2 16-10 28-32 25zM123 79c8-18 27-20 39-8-5 16-20 22-39 8zM81 42C66 28 49 31 43 45c14 10 28 9 38-3zM72 57C60 44 45 47 39 60c12 9 24 7 33-3zM102 35C98 18 84 13 72 20c4 14 15 20 30 15z" fill="url(#leaf)"/>
+  <path d="M102 86l47-43 47 43v76c0 14-11 25-25 25h-44c-14 0-25-11-25-25z" fill="url(#home)"/>
+  <path d="M102 86l47-43 47 43M118 86h62" fill="none" stroke="#d9eeaa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="149" y="137" text-anchor="middle" font-family="Georgia, serif" font-size="37" font-weight="bold" fill="#fff">VS</text>
+  <text x="149" y="157" text-anchor="middle" font-family="Arial, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.1" fill="#fff">DEVELOPERS</text>
+</svg>

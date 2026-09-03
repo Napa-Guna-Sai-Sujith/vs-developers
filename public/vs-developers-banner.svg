@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">VS Developers Premium Villa Plots</title>
+  <desc id="desc">VS Developers brand wordmark with ISO certification and Premium Villa Plots tagline</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9edf7"/>
+      <stop offset="1" stop-color="#f9fbfc"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="260" fill="url(#sky)"/>
+  <rect x="42" y="35" width="175" height="190" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+  <image href="/vs-developers-logo.svg" x="64" y="45" width="132" height="132"/>
+  <text x="130" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#161616">ISO 9001: 2015</text>
+  <text x="130" y="217" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#161616">Certified</text>
+  <text x="265" y="130" font-family="Arial, sans-serif" font-size="78" font-weight="900" letter-spacing="-2" fill="#8cff00" stroke="#0a0a0a" stroke-width="7" paint-order="stroke" filter="url(#shadow)">VS DEVELOPERS</text>
+  <path d="M266 160h415M266 174h415" stroke="#fff" stroke-width="3"/>
+  <text x="715" y="195" font-family="Georgia, serif" font-size="39" font-style="italic" font-weight="700" fill="#fff" stroke="#1b1b1b" stroke-width="2" paint-order="stroke">Premium Villa Plots...</text>
+</svg>
