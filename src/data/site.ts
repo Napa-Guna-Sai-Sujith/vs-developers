@@ -112,11 +112,7 @@ function makeLayout(
       }
 
       n++;
-      const roll = rnd();
-      let status: PlotStatus = "available";
-      if (isEdge && rnd() < 0.4) status = "corner";
-      else if (roll < 0.24) status = "sold";
-      else if (roll < 0.36) status = "reserved";
+      const status: PlotStatus = "sold";
 
       plots.push({
         id: `p-${c}-${r}`,
@@ -149,7 +145,7 @@ export interface Project {
   shortName: string;
   tagline: string;
   location: string;
-  status: "Selling" | "New Launch" | "Limited Plots";
+  status: "Sold Out" | "100% Sold Out" | "Completed" | "Selling" | "New Launch" | "Limited Plots";
   areaAcres: number;
   plotCount: number;
   sizes: string;
@@ -173,7 +169,7 @@ export const PROJECTS: Project[] = [
     shortName: "Heritage",
     tagline: "Twelve and a half acres of DTCP approved & DC converted calm in Kalkere.",
     location: "Kalkere, Bengaluru East",
-    status: "Selling", // or Phase 2 Open
+    status: "Sold Out",
     areaAcres: 12.5,
     plotCount: 148,
     sizes: "30×50 & 40×60 ft",
@@ -185,9 +181,9 @@ export const PROJECTS: Project[] = [
     about:
       "Twelve and a half acres of DTCP approved & DC converted calm in Kalkere — wide 40-ft avenues, a half-acre park and 148 vaastu-friendly plots minutes from Hennur Road.",
     highlights: [
-      "Phase 2 Open — DTCP Approved & DC Converted",
+      "100% Sold Out & Fully Handed Over",
       "Wide 40-ft avenues & half-acre park",
-      "148 vaastu-friendly plots",
+      "148 vaastu-friendly plots delivered",
       "Minutes from Hennur Road",
     ],
     amenities: [
@@ -226,7 +222,7 @@ export const PROJECTS: Project[] = [
     shortName: "Rosemeadows",
     tagline: "4.7 acres of flowering avenues on the Sulibele growth corridor.",
     location: "Sulibele Road, Hoskote",
-    status: "Selling",
+    status: "Sold Out",
     areaAcres: 4.7,
     plotCount: 71,
     sizes: "Starts at 30×40 ft",
@@ -238,7 +234,7 @@ export const PROJECTS: Project[] = [
     about:
       "4.7 acres of flowering avenues on the Sulibele growth corridor — DC / DTCP approved, with a rose-and-tabebuia theme woven through the master plan.",
     highlights: [
-      "Selling Now — DC / DTCP Approved",
+      "100% Sold Out & Handed Over",
       "Rose-and-tabebuia flowering avenues",
       "71 premium villa plots across 4.7 acres",
       "Plots starting at 30×40 ft on Sulibele Road",
@@ -281,7 +277,7 @@ export const PROJECTS: Project[] = [
     shortName: "Yogitha",
     tagline: "76 plots against a hill-and-lake backdrop, 20 mins from Whitefield.",
     location: "Budigere, Old Madras Road",
-    status: "New Launch",
+    status: "Sold Out",
     areaAcres: 6.8,
     plotCount: 76,
     sizes: "30×40 & 30×50 ft",
@@ -291,9 +287,9 @@ export const PROJECTS: Project[] = [
     mapEmbed: "https://maps.google.com/maps?q=13.2328838,77.9737425&hl=en&z=16&output=embed",
     mapUrl: "https://www.google.com/maps?q=13.2328838,77.9737425",
     about:
-      "Our boutique new launch at Budigere — 76 plots against a hill-and-lake backdrop, 20 minutes from Whitefield on NH-75.",
+      "Our boutique development at Budigere — 76 plots against a hill-and-lake backdrop, 20 minutes from Whitefield on NH-75.",
     highlights: [
-      "Boutique New Launch at Budigere",
+      "100% Sold Out & Delivered",
       "Hill-and-lake natural panoramic backdrop",
       "20 minutes from Whitefield on NH-75",
       "DC / DTCP Approved",

@@ -76,12 +76,8 @@ export default function Projects() {
               "DC Converted",
             ];
 
-            const statusBadgeText =
-              idx === 0 ? "PHASE 2 OPEN" : idx === 1 ? "SELLING NOW" : "NEW LAUNCH";
-            const statusBadgeColor =
-              idx === 1
-                ? "bg-[#c2984f] text-white"
-                : "bg-[#2e7d4f] text-white";
+            const statusBadgeText = "100% SOLD OUT";
+            const statusBadgeColor = "bg-[#1f6b3d] text-white";
 
             return (
               <Reveal key={p.slug} delay={0.1}>

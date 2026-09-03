@@ -675,29 +675,18 @@ export default function PlotViewer({
 
         {/* Legend Badges */}
         <div className="absolute left-4 top-4 flex flex-wrap gap-1.5 sm:left-5 sm:top-5">
-          {(
-            [
-              ["available", "Available Plots"],
-              ["corner", "Corner Plots"],
-              ["reserved", "Reserved"],
-              ["sold", "Constructed Villas"],
-            ] as [PlotStatus, string][]
-          ).map(([k, label]) => (
-            <span
-              key={k}
-              className="flex items-center gap-1.5 rounded-full border border-forest-600/15 bg-white/95 px-3 py-1.5 text-[10px] font-bold text-forest-800 shadow-sm backdrop-blur"
-            >
-              <span
-                className="h-2.5 w-2.5 rounded-full ring-2 ring-white"
-                style={{ background: STATUS_COLOR[k] }}
-              />
-              {label}
-            </span>
-          ))}
+          <span className="flex items-center gap-1.5 rounded-full border border-forest-600/15 bg-white/95 px-3 py-1.5 text-[10px] font-bold text-forest-800 shadow-sm backdrop-blur">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#1E4D2B] ring-2 ring-white" />
+            100% Sold Out & Delivered
+          </span>
+          <span className="flex items-center gap-1.5 rounded-full border border-forest-600/15 bg-white/95 px-3 py-1.5 text-[10px] font-bold text-forest-800 shadow-sm backdrop-blur">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#7A828A] ring-2 ring-white" />
+            Constructed Villas Handed Over
+          </span>
         </div>
 
         <p className="absolute right-4 top-4 hidden rounded-full border border-forest-600/15 bg-white/95 px-3.5 py-1.5 text-[10px] font-bold text-forest-800/80 shadow-sm backdrop-blur sm:block sm:right-5 sm:top-5">
-          🖱️ Drag to rotate · Scroll to zoom · Click plot to inspect
+          🖱️ Drag to rotate · Scroll to zoom · Click villa to inspect
         </p>
 
         {/* Selected Plot Detail Card Modal */}
@@ -713,26 +702,16 @@ export default function PlotViewer({
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: STATUS_COLOR[selected.status] }}
-                    />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#1E4D2B]" />
                     <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-gold-600">
-                      {name} · Plot {selected.label}
+                      {name} · Unit {selected.label}
                     </p>
                   </div>
                   <p className="mt-1.5 font-display text-xl font-semibold text-forest-900">
-                    {selected.sqft.toLocaleString("en-IN")} sq.ft ·{" "}
-                    {STATUS_LABEL[selected.status]}
+                    {selected.sqft.toLocaleString("en-IN")} sq.ft · Constructed Villa (Sold)
                   </p>
                   <p className="mt-1 text-xs text-forest-900/65 leading-relaxed">
-                    {selected.status === "sold"
-                      ? "Custom villa constructed and handed over to happy owner."
-                      : selected.status === "corner"
-                        ? "Prime dual-road access corner site, vaastu-aligned & ready for immediate registration."
-                        : selected.status === "reserved"
-                          ? "This plot is currently under booking token. Enquire for next phase availability."
-                          : "Clear titles, DC converted & DTCP approved. Loan-ready with immediate registration."}
+                    Custom villa constructed and handed over to proud owner. 100% of this layout is delivered. Register now for VIP early access to our next upcoming launch.
                   </p>
                 </div>
                 <button
@@ -747,13 +726,13 @@ export default function PlotViewer({
               <div className="mt-4 flex gap-2.5">
                 <a
                   href={CONTACT.whatsapp(
-                    `Hello! I'm interested in Plot ${selected.label} (${selected.sqft} sq.ft, ${STATUS_LABEL[selected.status]}) at ${name}. Please share pricing and layout plan.`,
+                    `Hello! I see ${name} is 100% sold out. Please share details and early access for your upcoming / next project launches.`,
                   )}
                   target="_blank"
                   rel="noreferrer"
                   className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:brightness-105"
                 >
-                  <WhatsAppGlyph className="h-4 w-4" /> Enquire on WhatsApp
+                  <WhatsAppGlyph className="h-4 w-4" /> Enquire for Next Launch
                 </a>
                 <a
                   href={CONTACT.phoneHref}
@@ -767,26 +746,8 @@ export default function PlotViewer({
         </AnimatePresence>
       </div>
 
-      {/* Filter Buttons */}
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            onClick={() => setFilter(f.key)}
-            className={cn(
-              "rounded-full px-5 py-2.5 text-xs font-bold transition-all duration-300",
-              filter === f.key
-                ? "bg-forest-700 text-white shadow-lg shadow-forest-700/25"
-                : "border border-forest-600/20 bg-white text-forest-700 hover:border-forest-600/50 hover:bg-mint-100/60",
-            )}
-          >
-            {f.label}
-          </button>
-        ))}
-      </div>
       <p className="mt-3 text-center text-[11px] text-forest-900/55">
-        Interactive 3D master plan layout. Showing plots, constructed villas, asphalt
-        avenues, and central landscaped parks.
+        Interactive 3D master plan layout. Showing constructed villas, asphalt avenues, and central landscaped parks — 100% delivered.
       </p>
     </div>
   );
