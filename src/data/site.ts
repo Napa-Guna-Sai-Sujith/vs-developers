@@ -161,6 +161,8 @@ export interface Project {
   gallery: GalleryItem[];
   layout: { plots: PlotCell[]; parks: PlotCell[] };
   about: string;
+  mapEmbed?: string;
+  mapUrl?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -177,6 +179,8 @@ export const PROJECTS: Project[] = [
     approvals: "DC / DTCP Approved",
     heroImage: "/projects/heritage/heritage-1.jpg",
     video: "https://videos.pexels.com/video-files/33700875/14313921_3840_2160_30fps.mp4",
+    mapEmbed: "https://maps.google.com/maps?q=13.026526,77.709515&hl=en&z=16&output=embed",
+    mapUrl: "https://maps.app.goo.gl/z5kCzu3gEZ34RUab9",
     about:
       "Twelve and a half acres of DTCP approved & DC converted calm in Kalkere — wide 40-ft avenues, a half-acre park and 148 vaastu-friendly plots minutes from Hennur Road.",
     highlights: [
@@ -219,22 +223,24 @@ export const PROJECTS: Project[] = [
     slug: "vs-rosemeadows",
     name: "VS Rosemeadows",
     shortName: "Rosemeadows",
-    tagline: "Nine acres of flowering avenues on the Sulibele growth corridor.",
+    tagline: "4.7 acres of flowering avenues on the Sulibele growth corridor.",
     location: "Sulibele Road, Hoskote",
     status: "Selling",
-    areaAcres: 9.2,
-    plotCount: 102,
-    sizes: "30×40 & 30×50 ft",
+    areaAcres: 4.7,
+    plotCount: 71,
+    sizes: "Starts at 30×40 ft",
     approvals: "DC / DTCP Approved",
     heroImage: "/projects/rose/rose-1.jpg",
     video: "https://videos.pexels.com/video-files/33700929/14314063_3840_2160_30fps.mp4",
+    mapEmbed: "https://maps.google.com/maps?q=13.2210196,77.9708434&hl=en&z=16&output=embed",
+    mapUrl: "https://www.google.com/maps/place/VS+ROSE+Meadows/@13.2210196,77.9708434,17z/data=!3m1!4b1!4m6!3m5!1s0x3badff003a519a3d:0xe6a6370eb6b4069b!8m2!3d13.2210196!4d77.9708434!16s%2Fg%2F11xdgpv3y6!18m1!1e1",
     about:
-      "Nine acres of flowering avenues on the Sulibele growth corridor — DC / DTCP approved, with a rose-and-tabebuia theme woven through the master plan.",
+      "4.7 acres of flowering avenues on the Sulibele growth corridor — DC / DTCP approved, with a rose-and-tabebuia theme woven through the master plan.",
     highlights: [
       "Selling Now — DC / DTCP Approved",
       "Rose-and-tabebuia flowering avenues",
-      "102 premium villa plots",
-      "Fast-appreciating Hoskote industrial & tech belt",
+      "71 premium villa plots across 4.7 acres",
+      "Plots starting at 30×40 ft on Sulibele Road",
     ],
     amenities: [
       { icon: "road", label: "Wide Asphalt Roads", desc: "30' & 40' roads with service lanes." },
@@ -281,6 +287,8 @@ export const PROJECTS: Project[] = [
     approvals: "DC / DTCP Approved",
     heroImage: "/projects/yogitha/yogitha-1.jpg",
     video: "https://videos.pexels.com/video-files/33700589/14313615_3840_2160_30fps.mp4",
+    mapEmbed: "https://maps.google.com/maps?q=13.2328838,77.9737425&hl=en&z=16&output=embed",
+    mapUrl: "https://www.google.com/maps?q=13.2328838,77.9737425",
     about:
       "Our boutique new launch at Budigere — 76 plots against a hill-and-lake backdrop, 20 minutes from Whitefield on NH-75.",
     highlights: [
