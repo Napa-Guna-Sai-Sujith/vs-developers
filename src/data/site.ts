@@ -19,18 +19,15 @@ export const CONTACT = {
 export const TAGLINE = "A Trusted Property Partner.";
 
 export const TRUST_BADGES = [
-  "BDA Approved",
-  "RERA Registered",
   "DTCP Approved",
   "DC Converted",
-  "BC Conversion",
 ];
 
 export const STATS = [
-  { value: 12, suffix: "", label: "Acres Developed", sub: "Across Bengaluru East" },
-  { value: 210, suffix: "+", label: "Plots Delivered", sub: "To happy owners" },
+  { value: 110, suffix: "+", label: "Acres Developed", sub: "Across Bengaluru East" },
+  { value: 1800, suffix: "+", label: "Plots Delivered", sub: "To happy owners" },
   { value: 10, suffix: "+", label: "Years of Trust", sub: "Family-run since 2014" },
-  { value: 150, suffix: "+", label: "Happy Families", sub: "And counting" },
+  { value: 1500, suffix: "+", label: "Happy Families", sub: "And counting" },
 ];
 
 /* ------------------------------ media helpers ---------------------- */
@@ -171,19 +168,19 @@ export const PROJECTS: Project[] = [
     slug: "vs-heritage",
     name: "VS Heritage",
     shortName: "Heritage",
-    tagline: "Twelve and a half acres of BDA + RERA approved calm in Kalkere.",
+    tagline: "Twelve and a half acres of DTCP approved & DC converted calm in Kalkere.",
     location: "Kalkere, Bengaluru East",
     status: "Selling", // or Phase 2 Open
     areaAcres: 12.5,
     plotCount: 148,
     sizes: "30×50 & 40×60 ft",
-    approvals: "BDA + RERA · BC Conversion",
+    approvals: "DC / DTCP Approved",
     heroImage: "/projects/heritage/heritage-1.jpg",
     video: "https://videos.pexels.com/video-files/33700875/14313921_3840_2160_30fps.mp4",
     about:
-      "Twelve and a half acres of BDA + RERA approved calm in Kalkere — wide 40-ft avenues, a half-acre park and 148 vaastu-friendly plots minutes from Hennur Road.",
+      "Twelve and a half acres of DTCP approved & DC converted calm in Kalkere — wide 40-ft avenues, a half-acre park and 148 vaastu-friendly plots minutes from Hennur Road.",
     highlights: [
-      "Phase 2 Open — BDA + RERA Approved",
+      "Phase 2 Open — DTCP Approved & DC Converted",
       "Wide 40-ft avenues & half-acre park",
       "148 vaastu-friendly plots",
       "Minutes from Hennur Road",
@@ -228,13 +225,13 @@ export const PROJECTS: Project[] = [
     areaAcres: 9.2,
     plotCount: 102,
     sizes: "30×40 & 30×50 ft",
-    approvals: "DC/DTCP · BC Conversion",
+    approvals: "DC / DTCP Approved",
     heroImage: "/projects/rose/rose-1.jpg",
     video: "https://videos.pexels.com/video-files/33700929/14314063_3840_2160_30fps.mp4",
     about:
-      "Nine acres of flowering avenues on the Sulibele growth corridor — DC/DTCP + BC conversion cleared, with a rose-and-tabebuia theme woven through the master plan.",
+      "Nine acres of flowering avenues on the Sulibele growth corridor — DC / DTCP approved, with a rose-and-tabebuia theme woven through the master plan.",
     highlights: [
-      "Selling Now — DC/DTCP + BC Conversion Cleared",
+      "Selling Now — DC / DTCP Approved",
       "Rose-and-tabebuia flowering avenues",
       "102 premium villa plots",
       "Fast-appreciating Hoskote industrial & tech belt",
@@ -281,7 +278,7 @@ export const PROJECTS: Project[] = [
     areaAcres: 6.8,
     plotCount: 76,
     sizes: "30×40 & 30×50 ft",
-    approvals: "DC/DTCP · BC Conversion",
+    approvals: "DC / DTCP Approved",
     heroImage: "/projects/yogitha/yogitha-1.jpg",
     video: "https://videos.pexels.com/video-files/33700589/14313615_3840_2160_30fps.mp4",
     about:
@@ -290,7 +287,7 @@ export const PROJECTS: Project[] = [
       "Boutique New Launch at Budigere",
       "Hill-and-lake natural panoramic backdrop",
       "20 minutes from Whitefield on NH-75",
-      "DC/DTCP + BC Conversion Cleared",
+      "DC / DTCP Approved",
     ],
     amenities: [
       { icon: "road", label: "Wide Asphalt Roads", desc: "30' roads with kerb stones and drains." },
@@ -412,7 +409,7 @@ export const SERVICES = [
   {
     icon: "seal",
     title: "Approved Layouts",
-    desc: "BDA, RERA, DTCP, DC & BC conversion secured on every layout — before a single plot is sold.",
+    desc: "DTCP approved & DC conversion secured on every layout — before a single plot is sold.",
   },
   {
     icon: "doc",
@@ -447,17 +444,17 @@ export const WHY_STEPS = [
   {
     icon: "award",
     title: "10 Years of Trust",
-    desc: "A family-run practice since 2014 — same desk, same people, same word. Two hundred and ten plots stand on it.",
+    desc: "A family-run practice since 2014 — same desk, same people, same word. 1800+ plots stand on it.",
   },
   {
     icon: "users",
-    title: "210+ Happy Plot Owners",
+    title: "1800+ Happy Plot Owners",
     desc: "Doctors, engineers, NRIs and second-generation buyers — most of our new sales still come from referrals.",
   },
   {
     icon: "seal",
     title: "100% Approved Layouts",
-    desc: "BDA, RERA, DTCP, DC and BC conversion on every layout. Approvals first, marketing later — always.",
+    desc: "DTCP approved and DC converted on every layout. Approvals first, marketing later — always.",
   },
   {
     icon: "doc",

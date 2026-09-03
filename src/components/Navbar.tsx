@@ -143,7 +143,7 @@ export default function Navbar() {
                   </div>
                   <div className="mt-4 flex items-center justify-between border-t border-forest-600/10 pt-4">
                     <p className="text-xs text-forest-900/55">
-                      BDA · RERA · DTCP approved plotted developments in Bengaluru East
+                      DTCP & DC converted plotted developments in Bengaluru East
                     </p>
                     <Link
                       to="/projects"

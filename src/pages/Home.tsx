@@ -109,8 +109,8 @@ function Hero() {
           transition={{ delay: 0.5, duration: 0.8, ease: EASE }}
           className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
         >
-          BDA, RERA & DTCP approved gated layouts with wide tree-lined roads, ready
-          utilities and bank-ready titles — 210+ plots across 12 acres, since 2014.
+          DTCP approved & DC converted gated layouts with wide tree-lined roads, ready
+          utilities and bank-ready titles — 1800+ plots across 110+ acres, since 2014.
         </motion.p>
 
         <motion.div
@@ -244,7 +244,7 @@ function AboutSnapshot() {
             <p className="mt-6 leading-relaxed text-forest-900/70">
               From our desk in Bhattarahalli, we've spent a decade turning raw Bengaluru
               East acreage into approval-perfect, tree-lined plotted layouts. Every VS
-              development is DC converted, BDA / RERA / DTCP approved and bank-loan
+              development is DC converted, DTCP approved and bank-loan
               ready — before a single plot is sold.
             </p>
           </Reveal>
@@ -322,7 +322,7 @@ function FeaturedProjects() {
               One standard of <em className="text-forest-600">trust.</em>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-forest-900/65">
-              Explore the VS portfolio — DC converted, BDA & RERA approved, green, and ready to build on.
+              Explore the VS portfolio — DC converted, DTCP approved, green, and ready to build on.
             </p>
           </Reveal>
 

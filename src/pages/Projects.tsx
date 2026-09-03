@@ -13,12 +13,10 @@ import { CONTACT, PROJECTS } from "../data/site";
 import { cn } from "../utils/cn";
 
 const TRUST_TICKER = [
-  "BDA Approved",
-  "RERA Registered",
-  "DC Conversion",
-  "BC Conversion",
   "DTCP Approved",
+  "DC Converted",
   "Clear Titles",
+  "Bank Loan Ready",
   "On-time Registration",
 ];
 
@@ -57,7 +55,7 @@ export default function Projects() {
               </span>
             </h1>
             <p className="mt-5 text-base leading-relaxed text-forest-900/70 sm:text-lg">
-              Every VS layout is BDA/RERA or DC/DTCP + BC Conversion approved before it reaches this page. Explore each — then come walk the land.
+              Every VS layout is DTCP approved & DC converted before it reaches this page. Explore each — then come walk the land.
             </p>
           </motion.div>
         </div>
@@ -74,8 +72,8 @@ export default function Projects() {
               `${p.areaAcres} acres`,
               `${p.plotCount} plots`,
               p.sizes,
-              p.approvals.split("·")[0].trim(),
-              "BC Conversion",
+              "DTCP Approved",
+              "DC Converted",
             ];
 
             const statusBadgeText =

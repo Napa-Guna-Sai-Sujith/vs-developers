@@ -33,13 +33,13 @@ const TIMELINE = [
   },
   {
     year: "2022",
-    title: "RERA era begins",
-    desc: "VS Rosemeadows launches as a RERA-registered layout at Budigere Cross, with our largest plots yet.",
+    title: "Expanding East",
+    desc: "VS Rosemeadows launches as a DTCP approved & DC converted layout at Sulibele Road, with our largest plots yet.",
   },
   {
     year: "2025",
     title: "VS Yogitha & beyond",
-    desc: "210+ plots delivered across 12 acres. VS Yogitha opens in Whitefield's growth orbit, minutes from the metro.",
+    desc: "1800+ plots delivered across 110+ acres. VS Yogitha opens in the Budigere growth corridor, minutes from Old Madras Road.",
   },
 ];
 
@@ -129,7 +129,7 @@ export default function About() {
               <p className="mt-6 leading-relaxed text-forest-900/70">
                 Most developers sell a dream and chase papers later. We do it backwards.
                 Before a single VS plot is offered, the land is DC converted, the layout
-                is BDA / RERA / DTCP approved, and the titles have passed our legal desk
+                is DTCP approved, and the titles have passed our legal desk
                 twice. It takes longer. It costs more. And it's why banks smile at our
                 buyers.
               </p>

@@ -48,8 +48,8 @@ const COMPARISON_DATA: ComparisonRow[] = [
     category: "Approvals",
     feature: "Government Approvals",
     heritage: "DC Converted · DTCP Approved",
-    rosemeadows: "RERA Registered · BC Conversion",
-    yogitha: "BDA Approved · RERA Registered",
+    rosemeadows: "DC Converted · DTCP Approved",
+    yogitha: "DC Converted · DTCP Approved",
     highlight: true,
   },
   {
