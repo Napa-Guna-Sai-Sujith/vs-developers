@@ -6,7 +6,7 @@ import { cn } from "../utils/cn";
 import { EASE, Icon, WhatsAppGlyph } from "./ui";
 
 /* ------------------------------------------------------------------ */
-/*  JioHotstar-Exact Fullscreen Cinematic Project Hero Carousel       */
+/*  JioHotstar-Exact Fullscreen Project Hero Carousel (White & Green) */
 /* ------------------------------------------------------------------ */
 
 export interface SpotlightItem {
@@ -152,206 +152,220 @@ export default function HotstarProjectSpotlight() {
   };
 
   return (
-    <section className="relative w-full bg-[#070D09] text-white">
-      {/* JioHotstar Fullscreen / Edge-to-Edge Hero Stage */}
-      <div
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        className="relative h-[82vh] min-h-[580px] max-h-[860px] w-full overflow-hidden sm:h-[86vh] sm:min-h-[640px]"
-      >
-        {/* Animated Fullscreen Backdrop with Ken Burns Zoom */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.96 }}
-            transition={{ duration: 0.9, ease: EASE }}
-            className="absolute inset-0"
-          >
-            <img
-              src={current.backdrop}
-              alt={current.title}
-              className="h-full w-full object-cover object-center"
-            />
-          </motion.div>
-        </AnimatePresence>
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#F4F9F5] to-white py-6 sm:py-10">
+      {/* Background Subtle Ambient Glows */}
+      <div className="pointer-events-none absolute -left-20 top-1/3 h-[450px] w-[450px] rounded-full bg-forest-600/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-20 bottom-1/3 h-[450px] w-[450px] rounded-full bg-gold-400/15 blur-[120px]" />
 
-        {/* Cinematic Gradient Overlays (Exact JioHotstar / Disney+ Hotstar UI) */}
-        {/* 1. Left Gradient (Darkens text area) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070D09] via-[#070D09]/85 via-45% to-transparent" />
-        
-        {/* 2. Bottom Gradient (Darkens thumbnails & blends to next section) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070D09] via-[#070D09]/60 via-30% to-transparent" />
-        
-        {/* 3. Top subtle vignette */}
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#070D09]/70 to-transparent" />
+      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
+        {/* JioHotstar Fullscreen / Edge-to-Edge Hero Stage in White & Green Theme */}
+        <div
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="relative h-[82vh] min-h-[580px] max-h-[840px] w-full overflow-hidden rounded-[2.5rem] border border-forest-600/15 bg-white shadow-2xl sm:h-[86vh] sm:min-h-[640px]"
+        >
+          {/* Animated Fullscreen Backdrop with Ken Burns Zoom */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.9, ease: EASE }}
+              className="absolute inset-0"
+            >
+              <img
+                src={current.backdrop}
+                alt={current.title}
+                className="h-full w-full object-cover object-center"
+              />
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Foreground Content Container */}
-        <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-between px-5 py-8 sm:px-10 sm:py-12 lg:px-14">
+          {/* White & Mint Gradient Overlays for High-Contrast Clean Typography */}
+          {/* 1. Left Gradient (Clean white background for text readability) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-45% to-white/10 sm:via-white/90" />
           
-          {/* Top Category Badge */}
-          <div className="flex items-center gap-3">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-gold-400 shadow-sm shadow-gold-400/80 animate-pulse" />
-            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-gold-400 drop-shadow">
-              Featured Portfolio Spotlight
-            </span>
-          </div>
+          {/* 2. Bottom Gradient (Seamless blend to bottom edge) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 via-25% to-transparent" />
+          
+          {/* 3. Top subtle ambient mint layer */}
+          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/80 to-transparent" />
 
-          {/* Main Info Block (Left Side) */}
-          <div className="mb-24 max-w-2xl sm:mb-20 lg:mb-12">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.id}
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.45, ease: EASE }}
-              >
-                {/* 1. Trending Blue / Gold Badge */}
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-[#38BDF8] drop-shadow sm:text-sm">
-                    {current.topBadge}
-                  </span>
-                </div>
-
-                {/* 2. Big Cinematic Title Heading */}
-                <h2 className="mt-2.5 font-display text-3xl font-black uppercase tracking-tight text-white drop-shadow-xl sm:text-5xl lg:text-6xl">
-                  {current.title}
-                </h2>
-
-                {/* 3. Year & Specs Meta Line */}
-                <p className="mt-2 text-xs font-bold text-white/90 drop-shadow sm:text-sm">
-                  <span>{current.yearMeta}</span>
-                  <span className="mx-2 text-white/40">·</span>
-                  <span className="text-gold-300">{current.location}</span>
-                </p>
-
-                {/* 4. Movie-synopsis Description */}
-                <p className="mt-3.5 line-clamp-3 max-w-xl text-xs leading-relaxed text-white/85 drop-shadow sm:text-sm sm:leading-relaxed">
-                  {current.description}
-                </p>
-
-                {/* 5. Genres / Feature Tags Bar (Exact Hotstar Style) */}
-                <div className="mt-4 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs font-bold text-white/90">
-                  {current.genres.map((g, gIdx) => (
-                    <span key={g} className="flex items-center gap-2">
-                      <span>{g}</span>
-                      {gIdx < current.genres.length - 1 && (
-                        <span className="text-white/30">|</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
-
-                {/* 6. Action Buttons Bar (Exact Hotstar Primary Gradient + Secondary Buttons) */}
-                <div className="mt-6 flex flex-wrap items-center gap-3.5">
-                  {/* Primary Hotstar Watch / Explore Button */}
-                  <Link
-                    to={current.link}
-                    className="group flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EC4899] px-7 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-sky-950/50 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-95"
-                  >
-                    <span className="flex h-5 w-5 items-center justify-center">
-                      <Icon name="play" className="h-4 w-4 fill-current" />
-                    </span>
-                    <span>Explore Master Plan</span>
-                  </Link>
-
-                  {/* Secondary Plus / Watchlist WhatsApp Enquiry Button */}
-                  <a
-                    href={CONTACT.whatsapp(
-                      `Hello! I'm interested in ${current.title} (${current.location}). Please share brochure and master plan details.`,
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 text-white shadow-lg backdrop-blur transition hover:bg-white/20 active:scale-95"
-                    title="Enquire on WhatsApp"
-                    aria-label="Enquire on WhatsApp"
-                  >
-                    <WhatsAppGlyph className="h-5 w-5" />
-                  </a>
-
-                  {/* Direct Phone Call Button */}
-                  <a
-                    href={CONTACT.phoneHref}
-                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 text-white shadow-lg backdrop-blur transition hover:bg-white/20 active:scale-95"
-                    title="Call VS Developers"
-                    aria-label="Call VS Developers"
-                  >
-                    <Icon name="phone" className="h-4 w-4" />
-                  </a>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Bottom-Right JioHotstar Thumbnail Carousel Overlay (Exact Hotstar UI) */}
-          <div className="absolute bottom-6 right-5 z-20 max-w-[90vw] sm:bottom-10 sm:right-10 sm:max-w-xl lg:right-14 lg:max-w-2xl">
-            <div className="flex items-center justify-end gap-2 pb-2">
-              <button
-                onClick={handlePrev}
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-white/20 active:scale-90"
-                aria-label="Previous thumbnail"
-              >
-                <Icon name="chevL" className="h-3.5 w-3.5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-white/20 active:scale-90"
-                aria-label="Next thumbnail"
-              >
-                <Icon name="chevR" className="h-3.5 w-3.5" />
-              </button>
+          {/* Foreground Content Container */}
+          <div className="relative flex h-full flex-col justify-between p-6 sm:p-10 lg:p-14">
+            
+            {/* Top Category Badge */}
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-forest-600 shadow-sm shadow-forest-600/80 animate-pulse" />
+              <span className="rounded-full border border-forest-600/20 bg-white/90 px-3.5 py-1 text-[11px] font-black uppercase tracking-[0.25em] text-forest-800 shadow-sm backdrop-blur">
+                Featured Portfolio Spotlight
+              </span>
             </div>
 
-            {/* Thumbnail Scroll Track */}
-            <div
-              ref={thumbScrollRef}
-              className="no-scrollbar flex gap-2.5 overflow-x-auto pb-1"
-            >
-              {SPOTLIGHT_ITEMS.map((item, idx) => {
-                const isActive = idx === activeIndex;
-                return (
+            {/* Main Info Block (Left Side in Crisp Dark Forest Green) */}
+            <div className="mb-24 max-w-2xl sm:mb-20 lg:mb-10">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.45, ease: EASE }}
+                >
+                  {/* 1. Trending Badge */}
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-md bg-mint-100/90 px-2.5 py-1 text-xs font-bold text-forest-700 shadow-xs border border-forest-600/15">
+                      <span className="h-1.5 w-1.5 rounded-full bg-forest-600" />
+                      {current.topBadge}
+                    </span>
+                  </div>
+
+                  {/* 2. Big Cinematic Title Heading */}
+                  <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight text-forest-950 sm:text-5xl lg:text-6xl">
+                    {current.title}
+                  </h2>
+
+                  {/* 3. Year & Specs Meta Line */}
+                  <p className="mt-2 text-xs font-bold text-forest-800 sm:text-sm">
+                    <span>{current.yearMeta}</span>
+                    <span className="mx-2 text-forest-900/30">·</span>
+                    <span className="text-gold-600">{current.location}</span>
+                  </p>
+
+                  {/* 4. Movie-synopsis Description */}
+                  <p className="mt-3.5 line-clamp-3 max-w-xl text-xs leading-relaxed text-forest-900/80 sm:text-sm sm:leading-relaxed">
+                    {current.description}
+                  </p>
+
+                  {/* 5. Genres / Feature Tags Bar in Clean White & Mint Badges */}
+                  <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-bold">
+                    {current.genres.map((g) => (
+                      <span
+                        key={g}
+                        className="rounded-full border border-forest-600/15 bg-white/90 px-3 py-1 text-forest-800 shadow-xs backdrop-blur-xs"
+                      >
+                        ✓ {g}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* 6. Action Buttons Bar (Signature Forest Green & Gold + WhatsApp) */}
+                  <div className="mt-6 flex flex-wrap items-center gap-3.5">
+                    {/* Primary Watch/Explore Button */}
+                    <Link
+                      to={current.link}
+                      className="group flex items-center gap-3 rounded-xl bg-gradient-to-r from-forest-800 via-forest-700 to-forest-800 px-7 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-forest-900/25 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-95"
+                    >
+                      <span className="flex h-5 w-5 items-center justify-center">
+                        <Icon name="play" className="h-4 w-4 fill-current" />
+                      </span>
+                      <span>Explore Master Plan</span>
+                    </Link>
+
+                    {/* Secondary WhatsApp Enquiry Button */}
+                    <a
+                      href={CONTACT.whatsapp(
+                        `Hello! I'm interested in ${current.title} (${current.location}). Please share brochure and master plan details.`,
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-md transition hover:brightness-105 active:scale-95"
+                      title="Enquire on WhatsApp"
+                      aria-label="Enquire on WhatsApp"
+                    >
+                      <WhatsAppGlyph className="h-5 w-5" />
+                    </a>
+
+                    {/* Direct Phone Call Button */}
+                    <a
+                      href={CONTACT.phoneHref}
+                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-forest-600/20 bg-white text-forest-800 shadow-sm backdrop-blur transition hover:bg-forest-50 active:scale-95"
+                      title="Call VS Developers"
+                      aria-label="Call VS Developers"
+                    >
+                      <Icon name="phone" className="h-4 w-4" />
+                    </a>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Bottom-Right JioHotstar Thumbnail Carousel Overlay in White & Green Theme */}
+            <div className="absolute bottom-6 right-5 z-20 max-w-[90vw] sm:bottom-10 sm:right-10 sm:max-w-xl lg:right-14 lg:max-w-2xl">
+              <div className="flex items-center justify-between pb-2">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-forest-900/70">
+                  Select Project / View ({activeIndex + 1}/{SPOTLIGHT_ITEMS.length})
+                </span>
+
+                {/* Arrow Controls */}
+                <div className="flex items-center gap-1.5">
                   <button
-                    key={item.id}
-                    onClick={() => {
-                      setActiveIndex(idx);
-                      setProgress(0);
-                    }}
-                    className={cn(
-                      "group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-lg text-left transition-all duration-300",
-                      "h-16 w-28 sm:h-20 sm:w-36 lg:h-22 lg:w-40",
-                      isActive
-                        ? "ring-2 ring-white scale-105 shadow-2xl z-10 opacity-100"
-                        : "opacity-50 hover:opacity-90 hover:scale-100 ring-1 ring-white/10",
-                    )}
+                    onClick={handlePrev}
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-forest-600/20 bg-white/90 text-forest-800 shadow-sm backdrop-blur transition hover:bg-forest-700 hover:text-white active:scale-90"
+                    aria-label="Previous thumbnail"
                   >
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                    {/* Thumbnail Title Overlay */}
-                    <div className="absolute inset-x-0 bottom-0 p-1.5 sm:p-2">
-                      <p className="line-clamp-1 font-display text-[10px] font-bold text-white drop-shadow sm:text-[11px]">
-                        {item.title}
-                      </p>
-                    </div>
-
-                    {/* Hotstar Active Slide Progress Line Bar */}
-                    {isActive && (
-                      <div className="absolute bottom-0 inset-x-0 h-1 bg-white/30">
-                        <div
-                          className="h-full bg-white transition-all duration-75 ease-linear"
-                          style={{ width: `${progress}%` }}
-                        />
-                      </div>
-                    )}
+                    <Icon name="chevL" className="h-3.5 w-3.5" />
                   </button>
-                );
-              })}
+                  <button
+                    onClick={handleNext}
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-forest-600/20 bg-white/90 text-forest-800 shadow-sm backdrop-blur transition hover:bg-forest-700 hover:text-white active:scale-90"
+                    aria-label="Next thumbnail"
+                  >
+                    <Icon name="chevR" className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Thumbnail Scroll Track */}
+              <div
+                ref={thumbScrollRef}
+                className="no-scrollbar flex gap-2.5 overflow-x-auto rounded-2xl border border-forest-600/15 bg-white/95 p-2 shadow-xl backdrop-blur-md"
+              >
+                {SPOTLIGHT_ITEMS.map((item, idx) => {
+                  const isActive = idx === activeIndex;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setActiveIndex(idx);
+                        setProgress(0);
+                      }}
+                      className={cn(
+                        "group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300",
+                        "h-16 w-28 sm:h-20 sm:w-36 lg:h-22 lg:w-40",
+                        isActive
+                          ? "ring-2 ring-forest-700 scale-[1.04] shadow-lg z-10 opacity-100"
+                          : "opacity-65 hover:opacity-100 hover:scale-100 ring-1 ring-forest-600/20",
+                      )}
+                    >
+                      <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-forest-950/25 to-transparent" />
+
+                      {/* Thumbnail Title Overlay */}
+                      <div className="absolute inset-x-0 bottom-0 p-1.5 sm:p-2">
+                        <p className="line-clamp-1 font-display text-[10px] font-bold text-white drop-shadow sm:text-[11px]">
+                          {item.title}
+                        </p>
+                      </div>
+
+                      {/* Active Slide Progress Line Bar in Green & Gold */}
+                      {isActive && (
+                        <div className="absolute bottom-0 inset-x-0 h-1 bg-white/40">
+                          <div
+                            className="h-full bg-forest-600 transition-all duration-75 ease-linear"
+                            style={{ width: `${progress}%` }}
+                          />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
