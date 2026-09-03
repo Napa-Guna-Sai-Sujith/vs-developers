@@ -206,7 +206,16 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <div className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-forest-600/10 card-shadow">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-forest-600/10 card-shadow">
+              <a
+                href={CONTACT.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute left-4 top-4 z-20 flex items-center gap-1.5 rounded-full border border-forest-600/20 bg-white/95 px-3.5 py-1.5 text-xs font-bold text-forest-800 shadow-md backdrop-blur transition hover:bg-forest-50 hover:text-forest-900"
+              >
+                <span>Open in Maps</span>
+                <Icon name="external" className="h-3.5 w-3.5 text-forest-600" />
+              </a>
               <iframe
                 title="VS Developers head office map"
                 src={CONTACT.mapEmbed}

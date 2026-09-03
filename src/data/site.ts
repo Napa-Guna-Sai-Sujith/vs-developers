@@ -11,8 +11,9 @@ export const CONTACT = {
   address:
     "#46/1, 1st Floor, Mahadev Complex, Behind Royal Enfield Showroom & Green Trends, Bhattarahalli, Virgonagar (P), Near T.C. Palya Gate Signal, Bangalore – 560049",
   shortAddress: "Bhattarahalli, Virgonagar, Bengaluru – 560049",
+  mapUrl: "https://maps.app.goo.gl/Bd2CoUQLbW4dbCjd9",
   mapEmbed:
-    "https://www.google.com/maps?q=Virgonagar+Bhattarahalli+Bangalore+560049&output=embed",
+    "https://maps.google.com/maps?q=13.0180673,77.7055913&hl=en&z=17&output=embed",
   hours: "Mon – Sat · 9:30 AM – 7:00 PM",
 };
 
