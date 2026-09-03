@@ -12,6 +12,8 @@ import {
   WHY_STEPS,
 } from "../data/site";
 import HotstarProjectSpotlight from "../components/HotstarProjectSpotlight";
+import Coverflow3DProjectShowcase from "../components/Coverflow3DProjectShowcase";
+import Perspective3DStackCards from "../components/Perspective3DStackCards";
 import { cn } from "../utils/cn";
 import {
   CountUp,
@@ -873,8 +875,10 @@ export default function Home() {
     <>
       <Hero />
       <Stats />
-      <AboutSnapshot />
       <HotstarProjectSpotlight />
+      <AboutSnapshot />
+      <Perspective3DStackCards />
+      <Coverflow3DProjectShowcase />
       <FeaturedProjects />
       <Services />
       <WhySection />

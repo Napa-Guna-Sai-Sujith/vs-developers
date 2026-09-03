@@ -6,174 +6,135 @@ import { cn } from "../utils/cn";
 import { EASE, Icon, WhatsAppGlyph } from "./ui";
 
 /* ------------------------------------------------------------------ */
-/*  JioHotstar-style Cinematic Project Spotlight Carousel             */
+/*  JioHotstar-Exact Fullscreen Cinematic Project Hero Carousel       */
 /* ------------------------------------------------------------------ */
 
 export interface SpotlightItem {
   id: string;
   title: string;
-  badge: string;
-  subtitle: string;
+  topBadge: string;
   yearMeta: string;
+  genres: string[];
   description: string;
   tags: string[];
   backdrop: string;
   thumbnail: string;
   link: string;
-  actionText: string;
   location: string;
-  stats: { label: string; value: string }[];
+  highlights: string;
 }
 
 const SPOTLIGHT_ITEMS: SpotlightItem[] = [
   {
     id: "rosemeadows",
     title: "VS ROSEMEADOWS",
-    badge: "100% Sold Out",
-    subtitle: "#1 Plotted Development on Sulibele Corridor",
+    topBadge: "#1 in Hoskote Corridor · 100% Sold Out",
     yearMeta: "2024 · 4.7 Acres · 71 Plots · DC / DTCP Approved",
+    genres: ["Villa Plots", "DC Converted", "DTCP Approved", "Flowering Avenues"],
     description:
-      "4.7 acres of flowering avenues on the Sulibele growth corridor — signature rose-and-tabebuia tree plantations, 40-ft wide boulevards, central landscaped park, and complete underground utility lines.",
-    tags: [
-      "DTCP Approved",
-      "DC Converted",
-      "Flowering Avenues",
-      "Central Jogging Track",
-      "Underground Power",
-    ],
+      "4.7 acres of flowering avenues on the Sulibele growth corridor — signature rose-and-tabebuia landscaping, 40-ft wide boulevards, central landscaped park, and complete underground utility lines delivered.",
+    tags: ["4.7 Acres Extent", "71 Villa Plots", "40-Ft Avenues", "Central Park", "Loan Ready"],
     backdrop: "/projects/rose/rose-1.jpg",
     thumbnail: "/projects/rose/rose-1.jpg",
     link: "/projects/vs-rosemeadows",
-    actionText: "Explore 3D Master Plan",
     location: "Sulibele Road, Hoskote",
-    stats: [
-      { label: "Total Area", value: "4.7 Acres" },
-      { label: "Villa Plots", value: "71 Units" },
-      { label: "Approvals", value: "DTCP / DC" },
-    ],
+    highlights: "Starts at 30×40 ft · Complete UGD & Power Delivered",
   },
   {
     id: "heritage",
     title: "VS HERITAGE",
-    badge: "Delivered & Occupied",
-    subtitle: "Twelve & a Half Acres of Plotted Calm",
+    topBadge: "#1 in Kalkere · 100% Delivered & Occupied",
     yearMeta: "2021 · 12.5 Acres · 148 Plots · Hennur Corridor",
+    genres: ["Township Masterplan", "Half-Acre Park", "40-Ft Boulevards", "Gated Security"],
     description:
-      "Twelve and a half acres of approval-perfect plotted community in Kalkere. Wide 40-ft avenue boulevards, a half-acre lush green park, and vaastu-aligned plots just minutes from Hennur Road and Manyata Tech Park.",
-    tags: [
-      "12.5 Acres Layout",
-      "Half-Acre Park",
-      "40-Ft Boulevards",
-      "Cauvery & Borewell",
-      "24×7 Gated Security",
-    ],
+      "Twelve and a half acres of approval-perfect plotted calm in Kalkere. Wide 40-ft avenues, a half-acre lush green central park with 800m jogging track, and 148 vaastu-friendly plots minutes from Hennur Road.",
+    tags: ["12.5 Acres Layout", "148 Plots Delivered", "Half-Acre Park", "Dual Water Lines", "Clear Titles"],
     backdrop: "/projects/heritage/heritage-1.jpg",
     thumbnail: "/projects/heritage/heritage-1.jpg",
     link: "/projects/vs-heritage",
-    actionText: "Explore 3D Master Plan",
     location: "Kalkere, Bengaluru East",
-    stats: [
-      { label: "Total Area", value: "12.5 Acres" },
-      { label: "Plots Delivered", value: "148 Units" },
-      { label: "Central Park", value: "0.5 Acres" },
-    ],
+    highlights: "30×50 & 40×60 ft · 15 Mins from Manyata Tech Park",
   },
   {
     id: "yogitha",
     title: "VS YOGITHA",
-    badge: "100% Sold Out",
-    subtitle: "Boutique Natural Living at Budigere",
-    yearMeta: "2023 · 6.8 Acres · 76 Plots · NH-75 Connectivity",
+    topBadge: "#1 at Budigere Cross · 100% Sold Out",
+    yearMeta: "2023 · 6.8 Acres · 76 Plots · NH-75 Highway",
+    genres: ["Boutique Community", "Hill & Lake View", "NH-75 Connectivity", "Underground UGD"],
     description:
-      "Boutique gated layout at Budigere set against a natural hill-and-lake backdrop — dual road access, kids' play area, underground drainage, and just 20 minutes from Whitefield ITPL.",
-    tags: [
-      "Hill & Lake Backdrop",
-      "Budigere Connectivity",
-      "Underground Drainage",
-      "Kids Play Park",
-      "Clear Titles",
-    ],
+      "Boutique gated layout at Budigere against a stunning natural hill-and-lake backdrop — 76 premium plots, dual road frontage, children's play park, and just 20 minutes from ITPL Whitefield.",
+    tags: ["6.8 Acres Extent", "76 Plots", "Hill & Lake Vista", "20 Mins to ITPL", "DC Converted"],
     backdrop: "/projects/yogitha/yogitha-1.jpg",
     thumbnail: "/projects/yogitha/yogitha-1.jpg",
     link: "/projects/vs-yogitha",
-    actionText: "Explore 3D Master Plan",
     location: "Budigere, Old Madras Road",
-    stats: [
-      { label: "Total Area", value: "6.8 Acres" },
-      { label: "Villa Plots", value: "76 Units" },
-      { label: "Connectivity", value: "NH-75 / ITPL" },
-    ],
+    highlights: "30×40 & 30×50 ft · 5 Mins from Budigere Cross",
   },
   {
-    id: "avenues",
-    title: "FLOWERING BOULEVARDS",
-    badge: "Eco-Friendly Master Plan",
-    subtitle: "Nature-First Infrastructure & Avenue Plantations",
-    yearMeta: "All Projects · 100% Green Cover · Jogging Loops",
+    id: "flowering-avenues",
+    title: "SIGNATURE FLOWERING BOULEVARDS",
+    topBadge: "Nature-First Architecture · 100% Green Living",
+    yearMeta: "All Developments · 5,000+ Planted Trees · Jogging Loops",
+    genres: ["Tabebuia Rosea", "Tree-Lined Avenues", "Rainwater Pits", "Eco Masterplan"],
     description:
-      "We build neighbourhoods you'll love living in. Every layout features curated Tabebuia Rosea avenue trees, manicured lawns, rainwater percolation pits, and dedicated walking promenades.",
-    tags: [
-      "Tabebuia Rosea",
-      "Tree-Lined Avenues",
-      "Rainwater Harvesting",
-      "Walking Tracks",
-      "Street Lighting",
-    ],
+      "We don't sell raw land — we cultivate thriving green neighbourhoods. Every VS Developers layout features curated Tabebuia Rosea pink & golden trumpet flowering trees along wide internal avenues.",
+    tags: ["Avenue Plantation", "Curated Parks", "800m Jogging Tracks", "Percolation Pits", "100% Living"],
     backdrop: "/projects/rose/rose-2.jpg",
     thumbnail: "/projects/rose/rose-2.jpg",
     link: "/projects",
-    actionText: "View All Layouts",
     location: "Across Bengaluru East",
-    stats: [
-      { label: "Acres Developed", value: "110+ Acres" },
-      { label: "Avenue Trees", value: "5000+ Planted" },
-      { label: "Green Cover", value: "100% Living" },
-    ],
+    highlights: "110+ Acres Developed · 1,800+ Plots Handed Over",
   },
   {
-    id: "infrastructure",
-    title: "BANK-APPROVED INFRASTRUCTURE",
-    badge: "Ready to Build",
-    subtitle: "Underground Power, Water & UGD Delivered",
-    yearMeta: "10+ Years of Trust · Double Legal Verification",
+    id: "infrastructure-excellence",
+    title: "CIVIL & UTILITY INFRASTRUCTURE",
+    topBadge: "Bank Approved · Delivered Before Registration",
+    yearMeta: "10+ Years Trust · Dual Legal Vetting · Move-in Ready",
     description:
-      "From underground electrical ducts to dedicated sewage connections, asphalt roads with concrete kerbs, and compound perimeter walls — every VS layout is 100% complete before registration.",
-    tags: [
-      "Underground Power",
-      "UGD Drainage Lines",
-      "Kerb Stone Roads",
-      "Perimeter Wall",
-      "Bank Loan Ready",
-    ],
+      "From underground electrical cabling and dedicated sewage pipelines to bituminous asphalt roads with precast concrete kerb stones and compound walls — every layout is 100% complete before registration.",
+    tags: ["Underground Power", "UGD Drainage", "Kerb Stone Roads", "LED Streetlights", "Pre-Approved Loans"],
     backdrop: "/projects/heritage/heritage-5.jpg",
     thumbnail: "/projects/heritage/heritage-5.jpg",
     link: "/about",
-    actionText: "Our Engineering Standards",
-    location: "Bhattarahalli, Bengaluru",
-    stats: [
-      { label: "Delivered Plots", value: "1800+" },
-      { label: "Happy Families", value: "1500+" },
-      { label: "Years Active", value: "10+ Years" },
-    ],
+    location: "Engineering Benchmark",
+    highlights: "SBI, HDFC & ICICI Loan Ready · 100% Clear Titles",
   },
 ];
 
 export default function HotstarProjectSpotlight() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
   const thumbScrollRef = useRef<HTMLDivElement>(null);
   const current = SPOTLIGHT_ITEMS[activeIndex];
 
-  // Auto advance timer every 6.5 seconds
+  const slideDuration = 7000; // 7 seconds per slide
+
+  // Slideshow timer & progress bar
   useEffect(() => {
     if (isPaused) return;
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % SPOTLIGHT_ITEMS.length);
-    }, 6500);
-    return () => clearInterval(timer);
-  }, [isPaused]);
+    const interval = 50;
+    const step = (interval / slideDuration) * 100;
 
-  // Ensure active thumbnail is scrolled into view
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setActiveIndex((currentIdx) => (currentIdx + 1) % SPOTLIGHT_ITEMS.length);
+          return 0;
+        }
+        return prev + step;
+      });
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [isPaused, activeIndex]);
+
+  // Reset progress on slide change
+  useEffect(() => {
+    setProgress(0);
+  }, [activeIndex]);
+
+  // Scroll active thumbnail into center view
   useEffect(() => {
     if (!thumbScrollRef.current) return;
     const activeEl = thumbScrollRef.current.children[activeIndex] as HTMLElement;
@@ -191,233 +152,206 @@ export default function HotstarProjectSpotlight() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-forest-950 py-12 text-white sm:py-20">
-      {/* Background Ambience Glow */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-forest-600/20 blur-[130px]" />
-      <div className="pointer-events-none absolute -right-40 bottom-1/4 h-[500px] w-[500px] rounded-full bg-gold-600/15 blur-[140px]" />
+    <section className="relative w-full bg-[#070D09] text-white">
+      {/* JioHotstar Fullscreen / Edge-to-Edge Hero Stage */}
+      <div
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="relative h-[82vh] min-h-[580px] max-h-[860px] w-full overflow-hidden sm:h-[86vh] sm:min-h-[640px]"
+      >
+        {/* Animated Fullscreen Backdrop with Ken Burns Zoom */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="absolute inset-0"
+          >
+            <img
+              src={current.backdrop}
+              alt={current.title}
+              className="h-full w-full object-cover object-center"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-8">
-        {/* Section Header */}
-        <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <span className="h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-gold-400">
-                Featured Portfolio Spotlight
-              </span>
-            </div>
-            <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Master Plan <span className="text-mint-300">Showcase</span>
-            </h2>
+        {/* Cinematic Gradient Overlays (Exact JioHotstar / Disney+ Hotstar UI) */}
+        {/* 1. Left Gradient (Darkens text area) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070D09] via-[#070D09]/85 via-45% to-transparent" />
+        
+        {/* 2. Bottom Gradient (Darkens thumbnails & blends to next section) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070D09] via-[#070D09]/60 via-30% to-transparent" />
+        
+        {/* 3. Top subtle vignette */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#070D09]/70 to-transparent" />
+
+        {/* Foreground Content Container */}
+        <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-between px-5 py-8 sm:px-10 sm:py-12 lg:px-14">
+          
+          {/* Top Category Badge */}
+          <div className="flex items-center gap-3">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-gold-400 shadow-sm shadow-gold-400/80 animate-pulse" />
+            <span className="text-[11px] font-black uppercase tracking-[0.3em] text-gold-400 drop-shadow">
+              Featured Portfolio Spotlight
+            </span>
           </div>
 
-          <p className="text-xs font-medium text-white/60 sm:text-right">
-            Click any project below to inspect details and master plan layout
-          </p>
-        </div>
+          {/* Main Info Block (Left Side) */}
+          <div className="mb-24 max-w-2xl sm:mb-20 lg:mb-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.45, ease: EASE }}
+              >
+                {/* 1. Trending Blue / Gold Badge */}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold text-[#38BDF8] drop-shadow sm:text-sm">
+                    {current.topBadge}
+                  </span>
+                </div>
 
-        {/* Main Hotstar Cinematic Banner Frame */}
-        <div
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          className="relative min-h-[540px] w-full overflow-hidden rounded-3xl border border-white/10 bg-forest-900 shadow-2xl sm:min-h-[620px] lg:min-h-[660px]"
-        >
-          {/* Animated Backdrop Image */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.7, ease: EASE }}
-              className="absolute inset-0"
-            >
-              <img
-                src={current.backdrop}
-                alt={current.title}
-                className="h-full w-full object-cover object-center"
-              />
-            </motion.div>
-          </AnimatePresence>
+                {/* 2. Big Cinematic Title Heading */}
+                <h2 className="mt-2.5 font-display text-3xl font-black uppercase tracking-tight text-white drop-shadow-xl sm:text-5xl lg:text-6xl">
+                  {current.title}
+                </h2>
 
-          {/* Cinematic Gradient Overlays (JioHotstar Style) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/70 to-transparent sm:bg-gradient-to-r sm:from-forest-950 sm:via-forest-950/85 sm:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-90" />
+                {/* 3. Year & Specs Meta Line */}
+                <p className="mt-2 text-xs font-bold text-white/90 drop-shadow sm:text-sm">
+                  <span>{current.yearMeta}</span>
+                  <span className="mx-2 text-white/40">·</span>
+                  <span className="text-gold-300">{current.location}</span>
+                </p>
 
-          {/* Foreground Spotlight Content Grid */}
-          <div className="relative flex h-full min-h-[540px] flex-col justify-between p-6 sm:min-h-[620px] sm:p-10 lg:min-h-[660px] lg:p-14">
-            {/* Top / Left Content Details */}
-            <div className="max-w-2xl">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.45, ease: EASE }}
-                >
-                  {/* Badge & Subtitle Line */}
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="rounded-full bg-gold-400 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-forest-950 shadow-md">
-                      {current.badge}
-                    </span>
-                    <span className="text-xs font-semibold text-mint-300">
-                      {current.subtitle}
-                    </span>
-                  </div>
+                {/* 4. Movie-synopsis Description */}
+                <p className="mt-3.5 line-clamp-3 max-w-xl text-xs leading-relaxed text-white/85 drop-shadow sm:text-sm sm:leading-relaxed">
+                  {current.description}
+                </p>
 
-                  {/* Main Title Heading */}
-                  <h3 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-white drop-shadow-md sm:text-5xl lg:text-6xl">
-                    {current.title}
-                  </h3>
-
-                  {/* Metadata Row */}
-                  <p className="mt-2.5 flex items-center gap-2 text-xs font-bold text-white/80 sm:text-sm">
-                    <span>{current.yearMeta}</span>
-                    <span className="text-white/40">·</span>
-                    <span className="text-gold-300">{current.location}</span>
-                  </p>
-
-                  {/* Description Paragraph */}
-                  <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
-                    {current.description}
-                  </p>
-
-                  {/* Tags Pill Row */}
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {current.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-lg border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold text-white/90 backdrop-blur-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Key Stats Bar */}
-                  <div className="mt-6 flex flex-wrap gap-6 border-y border-white/15 py-3.5">
-                    {current.stats.map((s) => (
-                      <div key={s.label}>
-                        <p className="font-display text-lg font-bold text-mint-200">
-                          {s.value}
-                        </p>
-                        <p className="text-[10px] font-bold uppercase tracking-wider text-white/60">
-                          {s.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA Action Buttons */}
-                  <div className="mt-7 flex flex-wrap items-center gap-3.5">
-                    <Link
-                      to={current.link}
-                      className="group flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-forest-600 via-forest-500 to-gold-500 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-forest-900/40 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-95"
-                    >
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
-                        <Icon name="play" className="h-3 w-3 fill-current" />
-                      </span>
-                      <span>{current.actionText}</span>
-                    </Link>
-
-                    <a
-                      href={CONTACT.whatsapp(
-                        `Hello! I'm interested in ${current.title} (${current.location}). Please share layout details & upcoming launch availability.`,
+                {/* 5. Genres / Feature Tags Bar (Exact Hotstar Style) */}
+                <div className="mt-4 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs font-bold text-white/90">
+                  {current.genres.map((g, gIdx) => (
+                    <span key={g} className="flex items-center gap-2">
+                      <span>{g}</span>
+                      {gIdx < current.genres.length - 1 && (
+                        <span className="text-white/30">|</span>
                       )}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-bold text-white shadow-md backdrop-blur transition hover:bg-white/20 active:scale-95"
-                    >
-                      <WhatsAppGlyph className="h-4 w-4" /> Enquire on WhatsApp
-                    </a>
+                    </span>
+                  ))}
+                </div>
 
-                    <a
-                      href={CONTACT.phoneHref}
-                      className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white shadow-md backdrop-blur transition hover:bg-forest-600 active:scale-95"
-                      aria-label="Call VS Developers"
-                      title="Call VS Developers"
-                    >
-                      <Icon name="phone" className="h-4 w-4" />
-                    </a>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                {/* 6. Action Buttons Bar (Exact Hotstar Primary Gradient + Secondary Buttons) */}
+                <div className="mt-6 flex flex-wrap items-center gap-3.5">
+                  {/* Primary Hotstar Watch / Explore Button */}
+                  <Link
+                    to={current.link}
+                    className="group flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#EC4899] px-7 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-sky-950/50 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-95"
+                  >
+                    <span className="flex h-5 w-5 items-center justify-center">
+                      <Icon name="play" className="h-4 w-4 fill-current" />
+                    </span>
+                    <span>Explore Master Plan</span>
+                  </Link>
+
+                  {/* Secondary Plus / Watchlist WhatsApp Enquiry Button */}
+                  <a
+                    href={CONTACT.whatsapp(
+                      `Hello! I'm interested in ${current.title} (${current.location}). Please share brochure and master plan details.`,
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 text-white shadow-lg backdrop-blur transition hover:bg-white/20 active:scale-95"
+                    title="Enquire on WhatsApp"
+                    aria-label="Enquire on WhatsApp"
+                  >
+                    <WhatsAppGlyph className="h-5 w-5" />
+                  </a>
+
+                  {/* Direct Phone Call Button */}
+                  <a
+                    href={CONTACT.phoneHref}
+                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 text-white shadow-lg backdrop-blur transition hover:bg-white/20 active:scale-95"
+                    title="Call VS Developers"
+                    aria-label="Call VS Developers"
+                  >
+                    <Icon name="phone" className="h-4 w-4" />
+                  </a>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Bottom-Right JioHotstar Thumbnail Carousel Overlay (Exact Hotstar UI) */}
+          <div className="absolute bottom-6 right-5 z-20 max-w-[90vw] sm:bottom-10 sm:right-10 sm:max-w-xl lg:right-14 lg:max-w-2xl">
+            <div className="flex items-center justify-end gap-2 pb-2">
+              <button
+                onClick={handlePrev}
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-white/20 active:scale-90"
+                aria-label="Previous thumbnail"
+              >
+                <Icon name="chevL" className="h-3.5 w-3.5" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-white/20 active:scale-90"
+                aria-label="Next thumbnail"
+              >
+                <Icon name="chevR" className="h-3.5 w-3.5" />
+              </button>
             </div>
 
-            {/* Bottom-Right Thumbnail Carousel Selector (JioHotstar Style) */}
-            <div className="mt-8 flex flex-col gap-3 lg:absolute lg:bottom-8 lg:right-8 lg:mt-0 lg:max-w-xl">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-white/70">
-                  Select Project / Highlight ({activeIndex + 1}/{SPOTLIGHT_ITEMS.length})
-                </span>
-
-                {/* Arrow Navigation Controls */}
-                <div className="flex items-center gap-2">
+            {/* Thumbnail Scroll Track */}
+            <div
+              ref={thumbScrollRef}
+              className="no-scrollbar flex gap-2.5 overflow-x-auto pb-1"
+            >
+              {SPOTLIGHT_ITEMS.map((item, idx) => {
+                const isActive = idx === activeIndex;
+                return (
                   <button
-                    onClick={handlePrev}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/25 active:scale-90"
-                    aria-label="Previous slide"
+                    key={item.id}
+                    onClick={() => {
+                      setActiveIndex(idx);
+                      setProgress(0);
+                    }}
+                    className={cn(
+                      "group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-lg text-left transition-all duration-300",
+                      "h-16 w-28 sm:h-20 sm:w-36 lg:h-22 lg:w-40",
+                      isActive
+                        ? "ring-2 ring-white scale-105 shadow-2xl z-10 opacity-100"
+                        : "opacity-50 hover:opacity-90 hover:scale-100 ring-1 ring-white/10",
+                    )}
                   >
-                    <Icon name="chevL" className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={handleNext}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/25 active:scale-90"
-                    aria-label="Next slide"
-                  >
-                    <Icon name="chevR" className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* Scrollable Thumbnails Tray */}
-              <div
-                ref={thumbScrollRef}
-                className="no-scrollbar flex gap-3 overflow-x-auto pb-2 pt-1"
-              >
-                {SPOTLIGHT_ITEMS.map((item, idx) => {
-                  const isActive = idx === activeIndex;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveIndex(idx)}
-                      className={cn(
-                        "group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-xl border-2 text-left transition-all duration-300",
-                        "h-20 w-32 sm:h-24 sm:w-38 lg:h-24 lg:w-40",
-                        isActive
-                          ? "border-gold-400 shadow-xl shadow-gold-500/25 scale-[1.04]"
-                          : "border-white/15 opacity-60 hover:opacity-100 hover:border-white/40",
-                      )}
-                    >
-                      <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/40 to-transparent" />
+                    {/* Thumbnail Title Overlay */}
+                    <div className="absolute inset-x-0 bottom-0 p-1.5 sm:p-2">
+                      <p className="line-clamp-1 font-display text-[10px] font-bold text-white drop-shadow sm:text-[11px]">
+                        {item.title}
+                      </p>
+                    </div>
 
-                      {/* Thumbnail Title Overlay */}
-                      <div className="absolute inset-x-0 bottom-0 p-2">
-                        <p className="line-clamp-1 font-display text-[11px] font-bold text-white drop-shadow">
-                          {item.title}
-                        </p>
-                        <p className="line-clamp-1 text-[9px] font-semibold text-mint-300">
-                          {item.badge}
-                        </p>
-                      </div>
-
-                      {/* Active Progress Bar */}
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeSpotlightBar"
-                          className="absolute bottom-0 inset-x-0 h-1 bg-gold-400"
+                    {/* Hotstar Active Slide Progress Line Bar */}
+                    {isActive && (
+                      <div className="absolute bottom-0 inset-x-0 h-1 bg-white/30">
+                        <div
+                          className="h-full bg-white transition-all duration-75 ease-linear"
+                          style={{ width: `${progress}%` }}
                         />
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
