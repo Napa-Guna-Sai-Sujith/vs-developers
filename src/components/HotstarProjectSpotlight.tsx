@@ -6,7 +6,7 @@ import { cn } from "../utils/cn";
 import { EASE, Icon, WhatsAppGlyph } from "./ui";
 
 /* ------------------------------------------------------------------ */
-/*  JioHotstar-Exact Fullscreen Project Hero Carousel (Crystal Clear) */
+/*  JioHotstar-Exact Fullscreen Project Hero Carousel (Transparent)   */
 /* ------------------------------------------------------------------ */
 
 export interface SpotlightItem {
@@ -155,13 +155,13 @@ export default function HotstarProjectSpotlight() {
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-white via-[#F4F9F5] to-white py-6 sm:py-10">
       <div className="relative mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
         
-        {/* Fullscreen Hero Stage with Crystal Clear Natural Image */}
+        {/* Fullscreen Hero Stage with 100% Transparent Foreground */}
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="relative h-[82vh] min-h-[580px] max-h-[840px] w-full overflow-hidden rounded-[2.5rem] border border-forest-600/15 bg-white shadow-2xl sm:h-[86vh] sm:min-h-[640px]"
+          className="relative h-[82vh] min-h-[580px] max-h-[840px] w-full overflow-hidden rounded-[2.5rem] border border-forest-600/15 bg-forest-950 shadow-2xl sm:h-[86vh] sm:min-h-[640px]"
         >
-          {/* 100% Crystal Clear Full-Quality Image Background with Smooth Ken Burns Zoom */}
+          {/* 100% Full-Quality Image Background with Smooth Ken Burns Zoom */}
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
@@ -179,18 +179,22 @@ export default function HotstarProjectSpotlight() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Clean Glassmorphic Foreground (No foggy white haze covering the whole image) */}
+          {/* Transparent Subtle Dark Vignette on Left Side for Crisp Text Readability without Opaque Boxes */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 via-50% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+
+          {/* 100% Transparent Foreground Content Container */}
           <div className="relative flex h-full flex-col justify-between p-6 sm:p-10 lg:p-12">
             
             {/* Top Category Badge */}
             <div className="flex items-center gap-2.5">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-forest-600 shadow-sm shadow-forest-600/80 animate-pulse" />
-              <span className="rounded-full border border-forest-600/20 bg-white/95 px-3.5 py-1 text-[11px] font-black uppercase tracking-[0.25em] text-forest-800 shadow-md backdrop-blur-md">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-gold-400 shadow-sm shadow-gold-400/80 animate-pulse" />
+              <span className="rounded-full border border-white/20 bg-black/40 px-3.5 py-1 text-[11px] font-black uppercase tracking-[0.25em] text-gold-300 shadow-md backdrop-blur-sm">
                 Featured Portfolio Spotlight
               </span>
             </div>
 
-            {/* Left-Hand Floating Frosted Glass Card for Crisp Typography */}
+            {/* Left-Hand 100% Transparent Info Block */}
             <div className="mb-20 max-w-xl sm:mb-16 lg:mb-8">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -199,30 +203,30 @@ export default function HotstarProjectSpotlight() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.45, ease: EASE }}
-                  className="rounded-3xl border border-white/80 bg-white/92 p-6 shadow-2xl backdrop-blur-md sm:p-8"
+                  className="bg-transparent p-0"
                 >
                   {/* 1. Trending Badge */}
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-md bg-mint-100 px-2.5 py-1 text-xs font-bold text-forest-800 shadow-xs border border-forest-600/15">
-                      <span className="h-1.5 w-1.5 rounded-full bg-forest-600" />
+                    <span className="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-black/40 px-2.5 py-1 text-xs font-bold text-mint-300 backdrop-blur-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                       {current.topBadge}
                     </span>
                   </div>
 
                   {/* 2. Big Cinematic Title Heading */}
-                  <h2 className="mt-2.5 font-display text-2xl font-black uppercase tracking-tight text-forest-950 sm:text-4xl lg:text-5xl">
+                  <h2 className="mt-2.5 font-display text-3xl font-black uppercase tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-5xl lg:text-6xl">
                     {current.title}
                   </h2>
 
                   {/* 3. Year & Specs Meta Line */}
-                  <p className="mt-1.5 text-xs font-bold text-forest-800 sm:text-sm">
+                  <p className="mt-2 text-xs font-bold text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] sm:text-sm">
                     <span>{current.yearMeta}</span>
-                    <span className="mx-2 text-forest-900/30">·</span>
-                    <span className="text-gold-600">{current.location}</span>
+                    <span className="mx-2 text-white/40">·</span>
+                    <span className="text-gold-300">{current.location}</span>
                   </p>
 
                   {/* 4. Description */}
-                  <p className="mt-3 line-clamp-3 text-xs leading-relaxed text-forest-900/80 sm:text-sm sm:leading-relaxed">
+                  <p className="mt-3 line-clamp-3 text-xs leading-relaxed text-white/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.95)] sm:text-sm sm:leading-relaxed">
                     {current.description}
                   </p>
 
@@ -231,7 +235,7 @@ export default function HotstarProjectSpotlight() {
                     {current.genres.map((g) => (
                       <span
                         key={g}
-                        className="rounded-full border border-forest-600/15 bg-white px-3 py-0.5 text-[11px] font-semibold text-forest-800 shadow-xs"
+                        className="rounded-full border border-white/20 bg-black/40 px-3 py-0.5 text-[11px] font-semibold text-white/95 backdrop-blur-sm drop-shadow"
                       >
                         ✓ {g}
                       </span>
@@ -242,7 +246,7 @@ export default function HotstarProjectSpotlight() {
                   <div className="mt-5 flex flex-wrap items-center gap-3">
                     <Link
                       to={current.link}
-                      className="group flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-forest-800 via-forest-700 to-forest-800 px-6 py-3 text-xs font-extrabold text-white shadow-xl shadow-forest-900/25 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-95 sm:text-sm"
+                      className="group flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-forest-700 via-forest-600 to-forest-800 px-6 py-3 text-xs font-extrabold text-white shadow-xl shadow-forest-950/50 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-95 sm:text-sm"
                     >
                       <span className="flex h-4 w-4 items-center justify-center">
                         <Icon name="play" className="h-3.5 w-3.5 fill-current" />
@@ -256,7 +260,7 @@ export default function HotstarProjectSpotlight() {
                       )}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-md transition hover:brightness-105 active:scale-95"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-lg transition hover:brightness-105 active:scale-95"
                       title="Enquire on WhatsApp"
                       aria-label="Enquire on WhatsApp"
                     >
@@ -265,7 +269,7 @@ export default function HotstarProjectSpotlight() {
 
                     <a
                       href={CONTACT.phoneHref}
-                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-forest-600/20 bg-white text-forest-800 shadow-sm transition hover:bg-forest-50 active:scale-95"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-black/40 text-white shadow-md backdrop-blur-sm transition hover:bg-white/20 active:scale-95"
                       title="Call VS Developers"
                       aria-label="Call VS Developers"
                     >
@@ -279,7 +283,7 @@ export default function HotstarProjectSpotlight() {
             {/* Bottom-Right JioHotstar Thumbnail Carousel Overlay */}
             <div className="absolute bottom-6 right-5 z-20 max-w-[90vw] sm:bottom-10 sm:right-10 sm:max-w-xl lg:right-12 lg:max-w-2xl">
               <div className="flex items-center justify-between pb-2">
-                <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-forest-900 shadow-sm backdrop-blur">
+                <span className="rounded-full border border-white/20 bg-black/40 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
                   Select Project ({activeIndex + 1}/{SPOTLIGHT_ITEMS.length})
                 </span>
 
@@ -287,14 +291,14 @@ export default function HotstarProjectSpotlight() {
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handlePrev}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-forest-600/20 bg-white text-forest-800 shadow-md backdrop-blur transition hover:bg-forest-700 hover:text-white active:scale-90"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white shadow-md backdrop-blur-sm transition hover:bg-forest-700 active:scale-90"
                     aria-label="Previous thumbnail"
                   >
                     <Icon name="chevL" className="h-3.5 w-3.5" />
                   </button>
                   <button
                     onClick={handleNext}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-forest-600/20 bg-white text-forest-800 shadow-md backdrop-blur transition hover:bg-forest-700 hover:text-white active:scale-90"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white shadow-md backdrop-blur-sm transition hover:bg-forest-700 active:scale-90"
                     aria-label="Next thumbnail"
                   >
                     <Icon name="chevR" className="h-3.5 w-3.5" />
@@ -305,7 +309,7 @@ export default function HotstarProjectSpotlight() {
               {/* Thumbnail Scroll Track */}
               <div
                 ref={thumbScrollRef}
-                className="no-scrollbar flex gap-2.5 overflow-x-auto rounded-2xl border border-white/80 bg-white/95 p-2 shadow-2xl backdrop-blur-md"
+                className="no-scrollbar flex gap-2.5 overflow-x-auto rounded-2xl border border-white/20 bg-black/30 p-2 shadow-2xl backdrop-blur-md"
               >
                 {SPOTLIGHT_ITEMS.map((item, idx) => {
                   const isActive = idx === activeIndex;
@@ -320,8 +324,8 @@ export default function HotstarProjectSpotlight() {
                         "group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300",
                         "h-16 w-28 sm:h-20 sm:w-36 lg:h-22 lg:w-40",
                         isActive
-                          ? "ring-2 ring-forest-700 scale-[1.04] shadow-lg z-10 opacity-100"
-                          : "opacity-65 hover:opacity-100 hover:scale-100 ring-1 ring-forest-600/20",
+                          ? "ring-2 ring-gold-400 scale-[1.04] shadow-xl z-10 opacity-100"
+                          : "opacity-60 hover:opacity-100 hover:scale-100 ring-1 ring-white/20",
                       )}
                     >
                       <img
@@ -329,7 +333,7 @@ export default function HotstarProjectSpotlight() {
                         alt={item.title}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-forest-950/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                       {/* Thumbnail Title Overlay */}
                       <div className="absolute inset-x-0 bottom-0 p-1.5 sm:p-2">
@@ -342,7 +346,7 @@ export default function HotstarProjectSpotlight() {
                       {isActive && (
                         <div className="absolute bottom-0 inset-x-0 h-1 bg-white/40">
                           <div
-                            className="h-full bg-forest-600 transition-all duration-75 ease-linear"
+                            className="h-full bg-gold-400 transition-all duration-75 ease-linear"
                             style={{ width: `${progress}%` }}
                           />
                         </div>
