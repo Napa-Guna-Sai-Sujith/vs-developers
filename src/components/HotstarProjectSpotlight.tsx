@@ -103,52 +103,23 @@ const SPOTLIGHT_ITEMS: SpotlightItem[] = [
 
 export default function HotstarProjectSpotlight() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [progress, setProgress] = useState(0);
   const thumbScrollRef = useRef<HTMLDivElement>(null);
   const current = SPOTLIGHT_ITEMS[activeIndex];
 
-  const slideDuration = 7000; // 7 seconds per slide
-
-  // Slideshow timer & progress bar
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = 50;
-    const step = (interval / slideDuration) * 100;
-
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setActiveIndex((currentIdx) => (currentIdx + 1) % SPOTLIGHT_ITEMS.length);
-          return 0;
-        }
-        return prev + step;
-      });
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [isPaused, activeIndex]);
-
-  // Reset progress on slide change
-  useEffect(() => {
-    setProgress(0);
-  }, [activeIndex]);
-
-  // Scroll active thumbnail into center view
-  useEffect(() => {
-    if (!thumbScrollRef.current) return;
-    const activeEl = thumbScrollRef.current.children[activeIndex] as HTMLElement;
-    if (activeEl) {
-      activeEl.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-    }
-  }, [activeIndex]);
-
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + SPOTLIGHT_ITEMS.length) % SPOTLIGHT_ITEMS.length);
+    const nextIdx = (activeIndex - 1 + SPOTLIGHT_ITEMS.length) % SPOTLIGHT_ITEMS.length;
+    setActiveIndex(nextIdx);
+    if (thumbScrollRef.current) {
+      thumbScrollRef.current.scrollBy({ left: -140, behavior: "smooth" });
+    }
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % SPOTLIGHT_ITEMS.length);
+    const nextIdx = (activeIndex + 1) % SPOTLIGHT_ITEMS.length;
+    setActiveIndex(nextIdx);
+    if (thumbScrollRef.current) {
+      thumbScrollRef.current.scrollBy({ left: 140, behavior: "smooth" });
+    }
   };
 
   return (
@@ -157,8 +128,6 @@ export default function HotstarProjectSpotlight() {
         
         {/* Fullscreen Hero Stage with 100% Transparent Foreground */}
         <div
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
           className="relative h-[82vh] min-h-[580px] max-h-[840px] w-full overflow-hidden rounded-[2.5rem] border border-forest-600/15 bg-forest-950 shadow-2xl sm:h-[86vh] sm:min-h-[640px]"
         >
           {/* 100% Full-Quality Image Background with Smooth Ken Burns Zoom */}
@@ -316,10 +285,7 @@ export default function HotstarProjectSpotlight() {
                   return (
                     <button
                       key={item.id}
-                      onClick={() => {
-                        setActiveIndex(idx);
-                        setProgress(0);
-                      }}
+                      onClick={() => setActiveIndex(idx)}
                       className={cn(
                         "group relative flex-shrink-0 cursor-pointer overflow-hidden rounded-xl text-left transition-all duration-300",
                         "h-16 w-28 sm:h-20 sm:w-36 lg:h-22 lg:w-40",
@@ -342,14 +308,9 @@ export default function HotstarProjectSpotlight() {
                         </p>
                       </div>
 
-                      {/* Active Slide Progress Line Bar */}
+                      {/* Active Indicator Line */}
                       {isActive && (
-                        <div className="absolute bottom-0 inset-x-0 h-1 bg-white/40">
-                          <div
-                            className="h-full bg-gold-400 transition-all duration-75 ease-linear"
-                            style={{ width: `${progress}%` }}
-                          />
-                        </div>
+                        <div className="absolute bottom-0 inset-x-0 h-1 bg-gold-400" />
                       )}
                     </button>
                   );

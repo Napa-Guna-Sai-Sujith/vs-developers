@@ -151,7 +151,6 @@ const STACK_CARDS: StackCard[] = [
 
 export default function Perspective3DStackCards() {
   const [activeTab, setActiveTab] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const handlePrev = () => {
     setActiveTab((prev) => (prev - 1 + STACK_CARDS.length) % STACK_CARDS.length);
@@ -161,22 +160,11 @@ export default function Perspective3DStackCards() {
     setActiveTab((prev) => (prev + 1) % STACK_CARDS.length);
   };
 
-  // Auto-advance slideshow timer with pause on hover
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % STACK_CARDS.length);
-    }, 6500);
-    return () => clearInterval(timer);
-  }, [isPaused]);
-
   const current = STACK_CARDS[activeTab];
   const nextCard = STACK_CARDS[(activeTab + 1) % STACK_CARDS.length];
 
   return (
     <section
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       className="relative overflow-hidden bg-white py-20 sm:py-28"
     >
       {/* Background Subtle Gradient */}
