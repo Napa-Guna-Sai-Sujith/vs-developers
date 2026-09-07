@@ -37,7 +37,7 @@ const px = (id: number, w = 1600, h = 1000) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=${w}&h=${h}`;
 
 // Public direct-stream URL for the client-provided Google Drive video.
-export const HERO_VIDEO = "/hero-video.mov";
+export const HERO_VIDEO = "/hero-video.mp4";
 export const HERO_POSTER = "/hero-poster.jpg";
 
 /* ------------------------------ 3D layout generator ---------------- */

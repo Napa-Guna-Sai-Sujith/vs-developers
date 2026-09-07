@@ -4,6 +4,7 @@ dist-ssr
 *.local
 .DS_Store
 .vscode
-*.mp4
+*demo*3d*design*
+*start*video*
 *.mov
-"demo 3d design.mp4"
+!public/hero-video.mp4
