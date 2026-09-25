@@ -6,6 +6,7 @@ import {
   useScroll,
   useSpring,
   useTransform,
+  useReducedMotion,
 } from "framer-motion";
 import {
   useEffect,
@@ -20,6 +21,53 @@ import { TRUST_BADGES } from "../data/site";
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
 export const EASE_LUX = [0.65, 0, 0.35, 1] as const;
+
+export function CinematicSection({
+  children,
+  first = false,
+}: {
+  children: ReactNode;
+  first?: boolean;
+}) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 0.24, 1], prefersReducedMotion ? [0, 0, 0] : [36, 0, -8]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.22, 0.72, 1],
+    prefersReducedMotion ? [1, 1, 1, 1] : [0.985, 1, 1, 0.975],
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.18, 0.8, 1],
+    prefersReducedMotion ? [1, 1, 1, 1] : [0.82, 1, 1, 0.94],
+  );
+  const filter = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 1],
+    prefersReducedMotion
+      ? ["blur(0px)", "blur(0px)", "blur(0px)", "blur(0px)"]
+      : ["blur(1.5px)", "blur(0px)", "blur(0px)", "blur(0.8px)"],
+  );
+
+  return (
+    <div
+      ref={sectionRef}
+      className={cn("relative z-10", !first && "-mt-[4vh]")}
+    >
+      <motion.div
+        style={{ y, scale, opacity, filter, transformOrigin: "top center" }}
+        className="relative"
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
 
 /* ------------------------------ icons ------------------------------ */
 

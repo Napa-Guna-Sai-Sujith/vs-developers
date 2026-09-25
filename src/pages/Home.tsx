@@ -18,6 +18,7 @@ import { cn } from "../utils/cn";
 import {
   CountUp,
   Cta,
+  CinematicSection,
   EASE,
   Field,
   GoldRule,
@@ -245,7 +246,7 @@ function AboutSnapshot() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-6 leading-relaxed text-forest-900/70">
-              From our desk in Bhattarahalli, we've spent a decade turning raw Bengaluru
+              From our desk in TC Palya, we've spent a decade turning raw Bengaluru
               East acreage into approval-perfect, tree-lined plotted layouts. Every VS
               development is DC converted, DTCP approved and bank-loan
               ready — before a single plot is sold.
@@ -873,18 +874,42 @@ export default function Home() {
   usePageTitle("VS Developers | Plotted Developments in Bengaluru | A Trusted Property Partner");
   return (
     <>
-      <Hero />
-      <Stats />
-      <HotstarProjectSpotlight />
-      <AboutSnapshot />
-      <Perspective3DStackCards />
-      <Coverflow3DProjectShowcase />
-      <FeaturedProjects />
-      <Services />
-      <WhySection />
-      <Testimonials />
-      <ScheduleVisit />
-      <Locations />
+      <CinematicSection first>
+        <Hero />
+      </CinematicSection>
+      <CinematicSection>
+        <Stats />
+      </CinematicSection>
+      <CinematicSection>
+        <HotstarProjectSpotlight />
+      </CinematicSection>
+      <CinematicSection>
+        <AboutSnapshot />
+      </CinematicSection>
+      <CinematicSection>
+        <Perspective3DStackCards />
+      </CinematicSection>
+      <CinematicSection>
+        <Coverflow3DProjectShowcase />
+      </CinematicSection>
+      <CinematicSection>
+        <FeaturedProjects />
+      </CinematicSection>
+      <CinematicSection>
+        <Services />
+      </CinematicSection>
+      <CinematicSection>
+        <WhySection />
+      </CinematicSection>
+      <CinematicSection>
+        <Testimonials />
+      </CinematicSection>
+      <CinematicSection>
+        <ScheduleVisit />
+      </CinematicSection>
+      <CinematicSection>
+        <Locations />
+      </CinematicSection>
     </>
   );
 }
