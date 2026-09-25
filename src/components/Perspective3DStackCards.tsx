@@ -1,8 +1,7 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { useRef } from "react";
 import { CONTACT } from "../data/site";
-import { cn } from "../utils/cn";
-import { EASE, Icon, WhatsAppGlyph } from "./ui";
+import { Icon, WhatsAppGlyph } from "./ui";
 
 /* ------------------------------------------------------------------ */
 /*  Interactive 3D Perspective Stacking Cards ("Building Communities") */
@@ -149,24 +148,111 @@ const STACK_CARDS: StackCard[] = [
   },
 ];
 
-export default function Perspective3DStackCards() {
-  const [activeTab, setActiveTab] = useState(0);
-
-  const handlePrev = () => {
-    setActiveTab((prev) => (prev - 1 + STACK_CARDS.length) % STACK_CARDS.length);
-  };
-
-  const handleNext = () => {
-    setActiveTab((prev) => (prev + 1) % STACK_CARDS.length);
-  };
-
-  const current = STACK_CARDS[activeTab];
-  const nextCard = STACK_CARDS[(activeTab + 1) % STACK_CARDS.length];
+function ScrollStackCard({
+  card,
+  index,
+  progress,
+}: {
+  card: StackCard;
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const start = index / STACK_CARDS.length;
+  const end = (index + 1) / STACK_CARDS.length;
+  const y = useTransform(progress, [start, end], ["110%", "0%"]);
+  const scale = useTransform(progress, [start, end], [0.96, 1]);
+  const opacity = useTransform(progress, [start, end], [0, 1]);
 
   return (
-    <section
-      className="relative overflow-hidden bg-white py-20 sm:py-28"
+    <motion.div
+      style={{ y: index === 0 ? 0 : y, scale: index === 0 ? 1 : scale, opacity: index === 0 ? 1 : opacity, zIndex: index + 1 }}
+      className={`absolute inset-0 overflow-hidden rounded-[2.25rem] border border-white/20 p-6 shadow-2xl backdrop-blur-xl sm:p-10 bg-gradient-to-br ${card.bgGradient}`}
     >
+      <div className="grid h-full items-center gap-6 sm:grid-cols-12 sm:gap-8">
+        <div className="flex flex-col justify-between sm:col-span-7">
+          <div>
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/15 text-gold-300">
+                <Icon name={card.icon} className="h-4.5 w-4.5" />
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-mint-300">
+                {card.tagline}
+              </span>
+            </div>
+
+            <h3 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
+              {card.title}
+            </h3>
+
+            <div className="mt-5 space-y-3">
+              {card.bullets.map((b, bIdx) => (
+                <div key={bIdx} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-400 text-forest-950">
+                    <Icon name="check" className="h-3 w-3 stroke-[2.8]" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-bold text-white sm:text-sm">{b.title}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-white/70">{b.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/15 pt-4">
+            <a
+              href={CONTACT.whatsapp(
+                `Hello! I'm reading about "${card.title}" at VS Developers. Please share layout brochures and details.`,
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:brightness-105"
+            >
+              <WhatsAppGlyph className="h-4 w-4" /> Quick Enquiry
+            </a>
+          </div>
+        </div>
+
+        <div className="relative hidden h-full flex-col justify-between sm:col-span-5 sm:flex">
+          <div className="relative h-60 w-full overflow-hidden rounded-2xl border border-white/20 shadow-xl">
+            <img src={card.image} alt={card.title} className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent" />
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gold-300">
+                Verified Standard
+              </span>
+              <span className="text-[10px] text-white/70">VS Developers</span>
+            </div>
+          </div>
+
+          <div className="mt-3 flex items-center justify-between rounded-xl border border-white/15 bg-white/10 p-3.5 backdrop-blur">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-white/60">
+                {card.highlightMetric.label}
+              </p>
+              <p className="font-display text-2xl font-bold text-gold-300">
+                {card.highlightMetric.value}
+              </p>
+            </div>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold text-mint-200">
+              Guaranteed
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Perspective3DStackCards() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <section ref={sectionRef} className="relative overflow-hidden bg-white py-20 sm:py-28">
       {/* Background Subtle Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#FAF7F0] to-transparent" />
 
@@ -184,248 +270,23 @@ export default function Perspective3DStackCards() {
             Building Communities. <em className="text-forest-700">Creating Value.</em>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-forest-900/65 sm:text-base">
-            Click any tab or use the navigation controls below to inspect our legal assurance, delivered infrastructure, strategic growth corridors, and master planning.
+            Scroll to move through our legal assurance, delivered infrastructure, strategic growth corridors, and master planning.
           </p>
         </div>
 
-        {/* Tab Selector Buttons */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          {STACK_CARDS.map((card, i) => (
-            <button
-              key={card.id}
-              onClick={() => setActiveTab(i)}
-              className={cn(
-                "flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-all duration-300 sm:px-5 sm:py-2.5",
-                activeTab === i
-                  ? "bg-forest-800 text-white shadow-lg shadow-forest-800/25 scale-[1.03]"
-                  : "border border-forest-600/20 bg-white text-forest-800 hover:border-forest-600/50 hover:bg-mint-50",
-              )}
-            >
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-[10px]">
-                0{i + 1}
-              </span>
-              <span>{card.tabLabel}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* 3D Perspective Stack Stage with Left/Right Navigation Controls */}
-        <div className="relative mt-12 flex items-center justify-center [perspective:1400px]">
-          
-          {/* Floating Left Arrow Button */}
-          <button
-            onClick={handlePrev}
-            className="absolute -left-2 z-40 hidden h-12 w-12 items-center justify-center rounded-full border border-forest-600/20 bg-white/95 text-forest-800 shadow-xl transition-all duration-200 hover:scale-110 hover:bg-forest-700 hover:text-white active:scale-95 sm:-left-6 sm:flex lg:-left-8"
-            aria-label="Previous card"
-            title="Previous Card"
-          >
-            <Icon name="chevL" className="h-5 w-5" />
-          </button>
-
-          {/* Floating Right Arrow Button */}
-          <button
-            onClick={handleNext}
-            className="absolute -right-2 z-40 hidden h-12 w-12 items-center justify-center rounded-full border border-forest-600/20 bg-white/95 text-forest-800 shadow-xl transition-all duration-200 hover:scale-110 hover:bg-forest-700 hover:text-white active:scale-95 sm:-right-6 sm:flex lg:-right-8"
-            aria-label="Next card"
-            title="Next Card"
-          >
-            <Icon name="chevR" className="h-5 w-5" />
-          </button>
-
-          <div className="relative h-[600px] w-full max-w-4xl sm:h-[500px]">
-            {STACK_CARDS.map((card, i) => {
-              const diff = i - activeTab;
-              const isSelected = i === activeTab;
-              const isBehind = i > activeTab;
-
-              // 3D positioning
-              let yOffset = 0;
-              let zOffset = 0;
-              let rotateX = 0;
-              let scale = 1;
-              let opacity = 1;
-              let zIndex = 10;
-
-              if (isSelected) {
-                yOffset = 0;
-                zOffset = 80;
-                rotateX = 0;
-                scale = 1;
-                opacity = 1;
-                zIndex = 30;
-              } else if (isBehind) {
-                yOffset = diff * 28;
-                zOffset = -diff * 60;
-                rotateX = -diff * 4;
-                scale = 1 - diff * 0.05;
-                opacity = Math.max(0, 1 - diff * 0.22);
-                zIndex = 20 - diff;
-              } else {
-                yOffset = diff * 28;
-                zOffset = diff * 60;
-                rotateX = diff * 4;
-                scale = 1 + diff * 0.05;
-                opacity = 0;
-                zIndex = 5;
-              }
-
-              return (
-                <motion.div
+        <div className="relative mt-12 h-[500vh]">
+          <div className="sticky top-6 flex h-[600px] items-center justify-center [perspective:1400px] sm:h-[500px]">
+            <div className="relative h-full w-full max-w-4xl">
+              {STACK_CARDS.map((card, index) => (
+                <ScrollStackCard
                   key={card.id}
-                  onClick={() => setActiveTab(i)}
-                  animate={{
-                    y: yOffset,
-                    z: zOffset,
-                    rotateX,
-                    scale,
-                    opacity,
-                  }}
-                  transition={{ duration: 0.5, ease: EASE }}
-                  style={{ zIndex }}
-                  className={cn(
-                    "absolute inset-0 cursor-pointer overflow-hidden rounded-[2.25rem] border border-white/20 p-6 shadow-2xl backdrop-blur-xl sm:p-10",
-                    `bg-gradient-to-br ${card.bgGradient}`,
-                    isSelected ? "ring-2 ring-gold-400/40" : "",
-                  )}
-                >
-                  <div className="grid h-full items-center gap-6 sm:grid-cols-12 sm:gap-8">
-                    {/* Left Column: Text & Features */}
-                    <div className="flex flex-col justify-between sm:col-span-7">
-                      <div>
-                        {/* Tagline & Badge */}
-                        <div className="flex items-center gap-2.5">
-                          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/15 text-gold-300">
-                            <Icon name={card.icon} className="h-4.5 w-4.5" />
-                          </span>
-                          <span className="text-[11px] font-bold uppercase tracking-widest text-mint-300">
-                            {card.tagline}
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-                          {card.title}
-                        </h3>
-
-                        {/* Bullet Items */}
-                        <div className="mt-5 space-y-3">
-                          {card.bullets.map((b, bIdx) => (
-                            <div key={bIdx} className="flex items-start gap-3">
-                              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-400 text-forest-950">
-                                <Icon name="check" className="h-3 w-3 stroke-[2.8]" />
-                              </span>
-                              <div>
-                                <p className="text-xs font-bold text-white sm:text-sm">
-                                  {b.title}
-                                </p>
-                                <p className="mt-0.5 text-xs text-white/70 leading-relaxed">
-                                  {b.desc}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Action Bar with Next Card Button */}
-                      <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/15 pt-4">
-                        <a
-                          href={CONTACT.whatsapp(
-                            `Hello! I'm reading about "${card.title}" at VS Developers. Please share layout brochures and details.`,
-                          )}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:brightness-105"
-                        >
-                          <WhatsAppGlyph className="h-4 w-4" /> Quick Enquiry
-                        </a>
-
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleNext();
-                          }}
-                          className="flex items-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/20 px-4 py-2.5 text-xs font-bold text-gold-300 backdrop-blur transition hover:bg-gold-400 hover:text-forest-950"
-                        >
-                          <span>Next: {nextCard.tabLabel}</span>
-                          <Icon name="arrowR" className="h-3.5 w-3.5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Right Column: Visual Preview Card */}
-                    <div className="relative hidden h-full flex-col justify-between sm:col-span-5 sm:flex">
-                      <div className="relative h-60 w-full overflow-hidden rounded-2xl border border-white/20 shadow-xl">
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          className="h-full w-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent" />
-                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                          <span className="text-[11px] font-bold uppercase tracking-wider text-gold-300">
-                            Verified Standard
-                          </span>
-                          <span className="text-[10px] text-white/70">VS Developers</span>
-                        </div>
-                      </div>
-
-                      {/* Highlight Metric Pill */}
-                      <div className="mt-3 flex items-center justify-between rounded-xl border border-white/15 bg-white/10 p-3.5 backdrop-blur">
-                        <div>
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-white/60">
-                            {card.highlightMetric.label}
-                          </p>
-                          <p className="font-display text-2xl font-bold text-gold-300">
-                            {card.highlightMetric.value}
-                          </p>
-                        </div>
-                        <span className="rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold text-mint-200">
-                          Guaranteed
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  card={card}
+                  index={index}
+                  progress={scrollYProgress}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Mobile & Bottom Navigation Controls Bar */}
-        <div className="mt-10 flex items-center justify-between border-t border-forest-600/10 pt-6 sm:justify-center sm:gap-6">
-          <button
-            onClick={handlePrev}
-            className="flex items-center gap-2 rounded-full border border-forest-600/20 bg-white px-4 py-2.5 text-xs font-bold text-forest-800 shadow-sm transition hover:bg-forest-700 hover:text-white"
-          >
-            <Icon name="chevL" className="h-4 w-4" />
-            <span>Previous</span>
-          </button>
-
-          {/* Step dots */}
-          <div className="flex items-center gap-2">
-            {STACK_CARDS.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveTab(idx)}
-                className={cn(
-                  "h-2 rounded-full transition-all duration-300",
-                  idx === activeTab
-                    ? "w-7 bg-forest-800"
-                    : "w-2 bg-forest-600/25 hover:bg-forest-600/50",
-                )}
-                aria-label={`Go to card ${idx + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={handleNext}
-            className="flex items-center gap-2 rounded-full border border-forest-600/20 bg-white px-4 py-2.5 text-xs font-bold text-forest-800 shadow-sm transition hover:bg-forest-700 hover:text-white"
-          >
-            <span>Next Card</span>
-            <Icon name="chevR" className="h-4 w-4" />
-          </button>
         </div>
       </div>
     </section>
