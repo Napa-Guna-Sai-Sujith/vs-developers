@@ -70,35 +70,6 @@ const SPOTLIGHT_ITEMS: SpotlightItem[] = [
     location: "Budigere, Old Madras Road",
     highlights: "30×40 & 30×50 ft · 5 Mins from Budigere Cross",
   },
-  {
-    id: "flowering-avenues",
-    title: "SIGNATURE FLOWERING BOULEVARDS",
-    topBadge: "Nature-First Architecture · 100% Green Living",
-    yearMeta: "All Developments · 5,000+ Planted Trees · Jogging Loops",
-    genres: ["Tabebuia Rosea", "Tree-Lined Avenues", "Rainwater Pits", "Eco Masterplan"],
-    description:
-      "We don't sell raw land — we cultivate thriving green neighbourhoods. Every VS Developers layout features curated Tabebuia Rosea pink & golden trumpet flowering trees along wide internal avenues.",
-    tags: ["Avenue Plantation", "Curated Parks", "800m Jogging Tracks", "Percolation Pits", "100% Living"],
-    backdrop: "/projects/rose/rose-2.jpg",
-    thumbnail: "/projects/rose/rose-2.jpg",
-    link: "/projects",
-    location: "Across Bengaluru East",
-    highlights: "110+ Acres Developed · 1,800+ Plots Handed Over",
-  },
-  {
-    id: "infrastructure-excellence",
-    title: "CIVIL & UTILITY INFRASTRUCTURE",
-    topBadge: "Bank Approved · Delivered Before Registration",
-    yearMeta: "10+ Years Trust · Dual Legal Vetting · Move-in Ready",
-    description:
-      "From underground electrical cabling and dedicated sewage pipelines to bituminous asphalt roads with precast concrete kerb stones and compound walls — every layout is 100% complete before registration.",
-    tags: ["Underground Power", "UGD Drainage", "Kerb Stone Roads", "LED Streetlights", "Pre-Approved Loans"],
-    backdrop: "/projects/heritage/heritage-5.jpg",
-    thumbnail: "/projects/heritage/heritage-5.jpg",
-    link: "/about",
-    location: "Engineering Benchmark",
-    highlights: "SBI, HDFC & ICICI Loan Ready · 100% Clear Titles",
-  },
 ];
 
 export default function HotstarProjectSpotlight() {
